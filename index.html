@@ -1,1083 +1,926 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>yedek // Root Security Operations Center & Neural Core</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>yedek · Offensive Security Researcher</title>
+
+  <!-- SEO -->
+  <meta name="description" content="yedek — Offensive Security Researcher & Red Team Operator. 3.5+ years of penetration testing, exchange security and vulnerability research. Available for security engagements.">
+  <meta name="keywords" content="security researcher, penetration testing, bug bounty, red team, offensive security, yedek">
+  <meta name="author" content="yedek">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://seqwraww.github.io/BIO/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="yedek · Offensive Security Researcher">
+  <meta property="og:description" content="Offensive Security Researcher & Red Team Operator. Penetration testing, exchange security, vulnerability research.">
+  <meta property="og:url" content="https://seqwraww.github.io/BIO/">
+  <meta property="og:image" content="https://seqwraww.github.io/BIO/avatar.jpg">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="yedek · Offensive Security Researcher">
+  <meta name="twitter:description" content="Offensive Security Researcher & Red Team Operator.">
+  <meta name="twitter:image" content="https://seqwraww.github.io/BIO/avatar.jpg">
+
+  <!-- Branding -->
+  <meta name="theme-color" content="#05070e">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2305070e'/%3E%3Cpath d='M32 6l20 8v14c0 13-8.5 24-20 30C20.5 52 12 41 12 28V14l20-8z' fill='none' stroke='%2300f3ff' stroke-width='3'/%3E%3Cpath d='M22 26l8 7 12-14' fill='none' stroke='%2300f3ff' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "yedek",
+    "url": "https://seqwraww.github.io/BIO/",
+    "jobTitle": "Offensive Security Researcher",
+    "email": "mailto:yedekhesap145566@gmail.com",
+    "knowsAbout": ["Penetration Testing", "Bug Bounty", "Red Teaming", "Application Security"]
+  }
+  </script>
+
 <style>
   :root {
     --bg-base: #05070e;
-    --panel-bg: rgba(9, 13, 26, 0.86);
-    --panel-border: rgba(0, 243, 255, 0.25);
-    --panel-glow: rgba(0, 243, 255, 0.15);
-    --cyan: #00f3ff;
-    --cyan-dim: rgba(0, 243, 255, 0.6);
+    --bg-panel: rgba(9, 13, 26, 0.86);
+    --bg-inset: rgba(0, 0, 0, 0.45);
+    --border: rgba(0, 243, 255, 0.22);
+    --border-soft: rgba(255, 255, 255, 0.07);
+    --glow: rgba(0, 243, 255, 0.14);
+    --accent: #00f3ff;
+    --accent-dim: rgba(0, 243, 255, 0.55);
+    --accent-soft: rgba(0, 243, 255, 0.08);
+    --secondary: #8b5cf6;
     --pink: #ff007f;
-    --purple: #8b5cf6;
-    --green: #00ff66;
+    --green: #00ff9d;
     --yellow: #ffb703;
-    --text-main: #edf2f7;
-    --text-dim: #798ba3;
-    --mono: 'Fira Code', monospace;
+    --text-main: #e8eef6;
+    --text-dim: #7c8da6;
+    --mono: 'Fira Code', ui-monospace, monospace;
     --display: 'Space Grotesk', sans-serif;
+    --radius: 10px;
   }
 
   [data-theme="matrix"] {
     --bg-base: #020803;
-    --panel-bg: rgba(4, 20, 8, 0.88);
-    --panel-border: rgba(0, 255, 102, 0.3);
-    --panel-glow: rgba(0, 255, 102, 0.18);
-    --cyan: #00ff66;
-    --cyan-dim: rgba(0, 255, 102, 0.6);
+    --bg-panel: rgba(4, 20, 8, 0.88);
+    --border: rgba(0, 255, 102, 0.25);
+    --glow: rgba(0, 255, 102, 0.16);
+    --accent: #00ff66;
+    --accent-dim: rgba(0, 255, 102, 0.55);
+    --accent-soft: rgba(0, 255, 102, 0.08);
+    --secondary: #15803d;
     --pink: #a3e635;
-    --purple: #15803d;
     --green: #00ff66;
     --yellow: #84cc16;
   }
 
   [data-theme="amber"] {
     --bg-base: #0a0700;
-    --panel-bg: rgba(22, 14, 2, 0.88);
-    --panel-border: rgba(255, 176, 0, 0.3);
-    --panel-glow: rgba(255, 176, 0, 0.18);
-    --cyan: #ffb000;
-    --cyan-dim: rgba(255, 176, 0, 0.6);
+    --bg-panel: rgba(22, 14, 2, 0.88);
+    --border: rgba(255, 176, 0, 0.25);
+    --glow: rgba(255, 176, 0, 0.16);
+    --accent: #ffb000;
+    --accent-dim: rgba(255, 176, 0, 0.55);
+    --accent-soft: rgba(255, 176, 0, 0.08);
+    --secondary: #c2410c;
     --pink: #ea580c;
-    --purple: #c2410c;
     --green: #fbbf24;
     --yellow: #f59e0b;
   }
 
   [data-theme="crimson"] {
     --bg-base: #0a0204;
-    --panel-bg: rgba(24, 4, 10, 0.88);
-    --panel-border: rgba(255, 38, 77, 0.3);
-    --panel-glow: rgba(255, 38, 77, 0.18);
-    --cyan: #ff264d;
-    --cyan-dim: rgba(255, 38, 77, 0.6);
+    --bg-panel: rgba(24, 4, 10, 0.88);
+    --border: rgba(255, 38, 77, 0.25);
+    --glow: rgba(255, 38, 77, 0.16);
+    --accent: #ff264d;
+    --accent-dim: rgba(255, 38, 77, 0.55);
+    --accent-soft: rgba(255, 38, 77, 0.08);
+    --secondary: #99002b;
     --pink: #ff0055;
-    --purple: #99002b;
     --green: #ff6b8b;
     --yellow: #f43f5e;
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  html, body {
+  html { height: 100%; }
+  body {
     height: 100%;
-    width: 100%;
     background: var(--bg-base);
     color: var(--text-main);
     font-family: var(--mono);
     overflow: hidden;
-    user-select: none;
+    -webkit-font-smoothing: antialiased;
   }
+  ::selection { background: var(--accent); color: #000; }
 
-  /* Scanline & CRT Effect */
   .crt::after {
-    content: " ";
-    display: block;
+    content: "";
     position: fixed; inset: 0;
-    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.35) 50%),
-                linear-gradient(90deg, rgba(255,0,0,0.02), rgba(0,255,0,0.01), rgba(0,0,255,0.02));
-    background-size: 100% 3px, 6px 100%;
-    z-index: 40;
+    background: linear-gradient(rgba(18,16,16,0) 50%, rgba(0,0,0,0.30) 50%);
+    background-size: 100% 3px;
     pointer-events: none;
-    opacity: 0.85;
+    z-index: 60;
+    opacity: 0.45;
   }
   .vignette {
     position: fixed; inset: 0;
-    background: radial-gradient(circle at center, transparent 45%, rgba(0,0,0,0.85) 100%);
-    z-index: 39;
+    background: radial-gradient(circle at center, transparent 42%, rgba(0,0,0,0.82) 100%);
     pointer-events: none;
+    z-index: 59;
   }
-
   #matrix-canvas {
     position: fixed; inset: 0;
     z-index: 1;
-    opacity: 0.32;
+    opacity: 0.30;
   }
-
-  /* HUD Topbar */
+  /* ============ TOP HUD BAR ============ */
   .hud-topbar {
     position: fixed; top: 0; left: 0; right: 0;
-    height: 38px;
+    height: 44px;
     background: rgba(5, 7, 14, 0.92);
-    border-bottom: 1px solid var(--panel-border);
-    backdrop-filter: blur(12px);
-    z-index: 30;
+    border-bottom: 1px solid var(--border);
+    backdrop-filter: blur(14px);
+    z-index: 40;
     display: flex; align-items: center; justify-content: space-between;
-    padding: 0 16px;
+    padding: 0 18px;
     font-size: 11px;
     letter-spacing: 1px;
   }
-  .hud-left, .hud-right, .hud-center {
-    display: flex; align-items: center; gap: 12px;
-  }
+  .hud-side { display: flex; align-items: center; gap: 14px; min-width: 0; }
   .live-dot {
     width: 7px; height: 7px; border-radius: 50%;
-    background: var(--cyan);
-    box-shadow: 0 0 10px var(--cyan);
-    animation: blink 1.2s infinite;
+    background: var(--accent);
+    box-shadow: 0 0 10px var(--accent);
+    animation: blink 1.4s infinite;
+    flex-shrink: 0;
   }
-  @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.2; } }
-  .hud-tag {
-    color: var(--cyan);
-    font-weight: 600;
+  @keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: 0.25; } }
+  .hud-tag { color: var(--accent); font-weight: 600; white-space: nowrap; }
+  .hud-center-text {
+    color: var(--text-dim);
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    overflow: hidden; text-overflow: ellipsis;
   }
   .hud-btn {
-    background: rgba(255,255,255,0.05);
-    border: 1px solid var(--panel-border);
+    background: var(--accent-soft);
+    border: 1px solid var(--border);
     color: var(--text-main);
-    padding: 4px 10px;
-    border-radius: 4px;
+    padding: 5px 12px;
+    border-radius: 6px;
     font-family: var(--mono);
     font-size: 10px;
+    letter-spacing: 1px;
     cursor: pointer;
-    transition: 0.2s;
+    transition: all 0.18s ease;
     display: inline-flex; align-items: center; gap: 6px;
+    flex-shrink: 0;
   }
   .hud-btn:hover {
-    background: var(--cyan);
-    color: #000;
-    box-shadow: 0 0 12px var(--cyan);
+    background: var(--accent); color: #000;
+    box-shadow: 0 0 14px var(--accent-dim);
+  }
+  .hud-btn:focus-visible, a:focus-visible, button:focus-visible, input:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
   }
 
-  /* ==========================================================
-     PRO BOOT TERMINAL GATE SCREEN
-     ========================================================== */
+  /* ============ BOOT GATE ============ */
   #gate {
     position: fixed; inset: 0; z-index: 100;
     background: radial-gradient(circle at center, #080d1e 0%, #030408 100%);
     display: flex; align-items: center; justify-content: center;
     padding: 20px;
-    transition: opacity 0.6s ease, transform 0.6s ease, visibility 0.6s;
+    transition: opacity 0.55s ease, transform 0.55s ease, visibility 0.55s;
   }
-  #gate.hidden {
-    opacity: 0; transform: scale(1.04); visibility: hidden; pointer-events: none;
-  }
+  #gate.hidden { opacity: 0; transform: scale(1.03); visibility: hidden; pointer-events: none; }
 
-  .boot-terminal-box {
-    width: min(720px, 94vw);
-    background: rgba(6, 10, 22, 0.92);
-    border: 1px solid var(--cyan);
-    border-radius: 8px;
-    box-shadow: 0 25px 60px rgba(0,0,0,0.8), 0 0 35px rgba(0, 243, 255, 0.25);
-    backdrop-filter: blur(25px);
+  .gate-box {
+    width: min(680px, 94vw);
+    background: var(--bg-panel);
+    border: 1px solid var(--accent);
+    border-radius: var(--radius);
+    box-shadow: 0 25px 70px rgba(0,0,0,0.8), 0 0 40px var(--glow);
+    backdrop-filter: blur(24px);
     display: flex; flex-direction: column;
     overflow: hidden;
     position: relative;
   }
-  .boot-terminal-box::before {
-    content: ""; position: absolute; top: 0; left: 0; width: 14px; height: 14px;
-    border-top: 2px solid var(--cyan); border-left: 2px solid var(--cyan);
+  .gate-box::before, .cyber-win::before {
+    content: ""; position: absolute; top: -1px; left: -1px;
+    width: 14px; height: 14px; z-index: 3;
+    border-top: 2px solid var(--accent); border-left: 2px solid var(--accent);
   }
-  .boot-terminal-box::after {
-    content: ""; position: absolute; bottom: 0; right: 0; width: 14px; height: 14px;
-    border-bottom: 2px solid var(--cyan); border-right: 2px solid var(--cyan);
+  .gate-box::after, .cyber-win::after {
+    content: ""; position: absolute; bottom: -1px; right: -1px;
+    width: 14px; height: 14px; z-index: 3;
+    border-bottom: 2px solid var(--accent); border-right: 2px solid var(--accent);
   }
 
-  .boot-header {
-    height: 38px;
+  .gate-header {
+    height: 42px;
     background: rgba(255,255,255,0.03);
-    border-bottom: 1px solid var(--panel-border);
+    border-bottom: 1px solid var(--border-soft);
     display: flex; align-items: center; justify-content: space-between;
-    padding: 0 14px;
+    padding: 0 16px;
     font-size: 11px;
-    color: var(--cyan);
+    color: var(--accent);
     font-weight: 600;
-    letter-spacing: 1px;
+    letter-spacing: 1.5px;
   }
-  .boot-body {
-    padding: 20px 22px;
-    display: flex; flex-direction: column; gap: 12px;
-    font-size: 12px;
-    line-height: 1.55;
-  }
-  .boot-ascii {
-    color: var(--cyan);
-    font-size: 9.5px;
+  .gate-header .sub { color: var(--text-dim); font-size: 10px; letter-spacing: 1px; font-weight: 400; }
+
+  .gate-body { padding: 20px 26px 24px; display: flex; flex-direction: column; gap: 14px; }
+  .gate-ascii {
+    color: var(--accent);
+    font-size: clamp(7px, 1.55vw, 11px);
     line-height: 1.15;
     white-space: pre;
-    text-shadow: 0 0 10px var(--cyan);
-    margin-bottom: 4px;
+    text-shadow: 0 0 12px var(--accent-dim);
+    align-self: center;
   }
-  .boot-logs {
-    background: rgba(0,0,0,0.45);
-    border: 1px solid rgba(255,255,255,0.06);
-    border-radius: 6px;
-    padding: 12px 14px;
-    height: 150px;
+  .gate-log {
+    background: var(--bg-inset);
+    border: 1px solid var(--border-soft);
+    border-radius: 8px;
+    padding: 12px 16px;
+    height: 138px;
     overflow-y: auto;
-    display: flex; flex-direction: column; gap: 4px;
+    display: flex; flex-direction: column; gap: 5px;
     font-size: 11.5px;
+    line-height: 1.5;
   }
-  .boot-logs::-webkit-scrollbar { width: 4px; }
-  .boot-logs::-webkit-scrollbar-thumb { background: var(--panel-border); border-radius: 2px; }
+  .gate-log::-webkit-scrollbar { width: 4px; }
+  .gate-log::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+  .gline { opacity: 0; animation: glineIn 0.22s forwards; word-break: break-word; }
+  @keyframes glineIn { to { opacity: 1; } }
+  .gline.ok   { color: var(--green); }
+  .gline.info { color: var(--accent-dim); }
+  .gline.warn { color: var(--yellow); }
+  .gline.crit { color: var(--pink); font-weight: 600; }
 
-  .boot-line { word-break: break-word; }
-  .boot-line.ok { color: var(--green); }
-  .boot-line.info { color: var(--cyan-dim); }
-  .boot-line.warn { color: var(--yellow); }
-  .boot-line.crit { color: var(--pink); font-weight: 600; }
-
-  .decrypt-progress-wrap {
-    display: flex; flex-direction: column; gap: 6px; margin-top: 4px;
-  }
-  .decrypt-info {
-    display: flex; justify-content: space-between; font-size: 11px; color: var(--text-dim);
-  }
-  .decrypt-info span:last-child { color: var(--cyan); font-weight: 600; }
-  .decrypt-bar-bg {
-    height: 6px; background: rgba(255,255,255,0.08); border-radius: 3px; overflow: hidden;
-  }
-  .decrypt-bar-fill {
+  .gate-progress { display: flex; flex-direction: column; gap: 7px; }
+  .gp-row { display: flex; justify-content: space-between; font-size: 10.5px; color: var(--text-dim); letter-spacing: 1.5px; }
+  .gp-row b { color: var(--accent); font-weight: 700; }
+  .gp-track { height: 5px; background: rgba(255,255,255,0.08); border-radius: 3px; overflow: hidden; }
+  .gp-fill {
     height: 100%; width: 0%;
-    background: linear-gradient(90deg, var(--cyan), var(--green));
-    box-shadow: 0 0 10px var(--cyan);
-    transition: width 0.15s ease;
+    background: linear-gradient(90deg, var(--accent), var(--secondary));
+    box-shadow: 0 0 12px var(--accent-dim);
+    transition: width 0.18s ease;
   }
 
-  .boot-enter-btn {
-    background: linear-gradient(90deg, var(--cyan), var(--purple));
+  .gate-enter {
+    background: linear-gradient(90deg, var(--accent), var(--secondary));
     border: none;
     color: #05070e;
     font-family: var(--display);
     font-size: 13px; font-weight: 700;
-    letter-spacing: 1.5px;
+    letter-spacing: 2px;
     text-transform: uppercase;
-    padding: 13px 20px;
-    border-radius: 6px;
+    padding: 14px 22px;
+    border-radius: 8px;
     cursor: pointer;
     display: flex; align-items: center; justify-content: center; gap: 10px;
-    box-shadow: 0 0 25px rgba(0, 243, 255, 0.35);
-    transition: 0.2s transform, 0.2s filter;
-    margin-top: 6px;
+    box-shadow: 0 0 28px var(--glow);
+    transition: transform 0.18s ease, filter 0.18s ease;
   }
-  .boot-enter-btn:hover {
-    transform: translateY(-2px);
-    filter: brightness(1.15);
+  .gate-enter:hover { transform: translateY(-2px); filter: brightness(1.15); }
+  .gate-enter kbd {
+    background: rgba(0,0,0,0.25);
+    border: 1px solid rgba(0,0,0,0.35);
+    border-radius: 4px;
+    padding: 1px 7px;
+    font-family: var(--mono);
+    font-size: 11px;
   }
-  .boot-hint {
-    text-align: center; font-size: 10px; color: var(--text-dim); letter-spacing: 1px;
-  }
-
-  /* ==========================================================
-     MAIN WORKSPACE GRID & PERFECT SCROLL CONTAINERS
-     ========================================================== */
+  .gate-hint { text-align: center; font-size: 10px; color: var(--text-dim); letter-spacing: 1.5px; }
+  /* ============ WORKSPACE GRID ============ */
   #workspace {
     position: fixed;
-    top: 48px;
-    bottom: 12px;
-    left: 14px;
-    right: 14px;
+    top: 56px; bottom: 14px; left: 16px; right: 16px;
     z-index: 10;
     display: grid;
-    grid-template-columns: 340px 1fr;
-    gap: 14px;
-    min-height: 0;
-    height: calc(100vh - 60px);
+    grid-template-columns: 350px 1fr;
+    gap: 16px;
+    height: calc(100vh - 70px);
     opacity: 0;
-    transform: scale(0.98);
-    transition: opacity 0.5s ease, transform 0.5s ease;
+    transform: scale(0.985);
+    transition: opacity 0.55s ease 0.1s, transform 0.55s ease 0.1s;
   }
-  #workspace.active {
-    opacity: 1; transform: scale(1);
-  }
+  #workspace.active { opacity: 1; transform: scale(1); }
 
-  /* Cyber Windows */
   .cyber-win {
-    background: var(--panel-bg);
-    border: 1px solid var(--panel-border);
-    border-radius: 10px;
-    box-shadow: 0 16px 40px rgba(0,0,0,0.6), inset 0 0 25px var(--panel-glow);
+    background: var(--bg-panel);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: 0 18px 50px rgba(0,0,0,0.55), inset 0 0 30px var(--glow);
     backdrop-filter: blur(20px);
     display: flex; flex-direction: column;
-    min-height: 0;
-    height: 100%;
+    min-height: 0; height: 100%;
     overflow: hidden;
     position: relative;
   }
-  .cyber-win::before {
-    content: ""; position: absolute;
-    top: 0; left: 0; width: 12px; height: 12px;
-    border-top: 2px solid var(--cyan);
-    border-left: 2px solid var(--cyan);
-    z-index: 2;
-  }
-  .cyber-win::after {
-    content: ""; position: absolute;
-    bottom: 0; right: 0; width: 12px; height: 12px;
-    border-bottom: 2px solid var(--cyan);
-    border-right: 2px solid var(--cyan);
-    z-index: 2;
-  }
 
   .win-header {
-    height: 36px;
+    height: 38px;
     flex-shrink: 0;
     background: rgba(255,255,255,0.03);
-    border-bottom: 1px solid rgba(255,255,255,0.08);
+    border-bottom: 1px solid var(--border-soft);
     display: flex; align-items: center; justify-content: space-between;
-    padding: 0 12px;
+    padding: 0 14px;
     font-size: 11px;
-    letter-spacing: 1px;
+    letter-spacing: 1.5px;
   }
-  .win-title {
-    display: flex; align-items: center; gap: 8px;
-    color: var(--cyan); font-weight: 600;
-  }
+  .win-title { display: flex; align-items: center; gap: 8px; color: var(--accent); font-weight: 600; }
   .win-controls { display: flex; gap: 6px; }
-  .win-dot {
-    width: 9px; height: 9px; border-radius: 50%;
-    background: rgba(255,255,255,0.15);
-  }
+  .win-dot { width: 9px; height: 9px; border-radius: 50%; background: rgba(255,255,255,0.15); }
   .win-dot.r { background: var(--pink); box-shadow: 0 0 6px var(--pink); }
   .win-dot.y { background: var(--yellow); }
   .win-dot.g { background: var(--green); }
 
-  /* Left Panel: Profile & Specs */
+  /* ============ LEFT PANEL / PROFILE ============ */
   .profile-scroll {
-    flex: 1;
-    min-height: 0;
-    overflow-y: auto;
-    overflow-x: hidden;
-    padding: 18px 18px 14px;
-    display: flex; flex-direction: column; gap: 14px;
+    flex: 1; min-height: 0;
+    overflow-y: auto; overflow-x: hidden;
+    padding: 18px;
+    display: flex; flex-direction: column; gap: 15px;
   }
   .profile-scroll::-webkit-scrollbar { width: 4px; }
-  .profile-scroll::-webkit-scrollbar-thumb { background: var(--panel-border); border-radius: 2px; }
+  .profile-scroll::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
 
   .avatar-hud {
     position: relative;
-    width: 108px; height: 108px;
-    margin: 0 auto;
+    width: 112px; height: 112px;
+    margin: 2px auto 0;
     flex-shrink: 0;
   }
-  .avatar-hud-ring {
-    position: absolute; inset: -6px;
-    border: 1px dashed var(--cyan);
+  .avatar-ring {
+    position: absolute; inset: -7px;
+    border: 1px dashed var(--accent-dim);
     border-radius: 50%;
-    animation: ringSpin 20s linear infinite;
+    animation: ringSpin 22s linear infinite;
   }
-  @keyframes ringSpin { 100% { transform: rotate(360deg); } }
+  @keyframes ringSpin { to { transform: rotate(360deg); } }
   .avatar-img {
     width: 100%; height: 100%;
     border-radius: 50%;
     background-image: url('avatar.jpg');
     background-size: cover;
     background-position: center;
-    border: 2px solid var(--panel-border);
-    box-shadow: 0 0 25px var(--panel-glow);
+    border: 2px solid var(--border);
+    box-shadow: 0 0 28px var(--glow);
   }
-  .avatar-status-badge {
-    position: absolute; bottom: -2px; right: -2px;
+  .avatar-badge {
+    position: absolute; bottom: -3px; right: -6px;
     background: #000;
-    border: 1px solid var(--cyan);
-    color: var(--cyan);
+    border: 1px solid var(--accent);
+    color: var(--accent);
     font-size: 9px; font-weight: 700;
-    padding: 2px 6px; border-radius: 4px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.8);
+    padding: 2px 7px;
+    border-radius: 5px;
+    box-shadow: 0 0 12px rgba(0,0,0,0.8);
+    letter-spacing: 1px;
   }
 
   .id-details { text-align: center; }
   .id-name {
     font-family: var(--display);
-    font-size: 22px; font-weight: 700;
-    letter-spacing: 0.5px;
+    font-size: 23px; font-weight: 700;
     display: flex; align-items: center; justify-content: center; gap: 8px;
   }
   .verified-badge {
-    width: 16px; height: 16px; border-radius: 4px;
-    background: var(--cyan);
+    width: 17px; height: 17px; border-radius: 5px;
+    background: var(--accent);
     display: inline-flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    box-shadow: 0 0 10px var(--glow);
   }
-  .verified-badge svg { width: 10px; height: 10px; fill: #000; }
+  .verified-badge svg { width: 11px; height: 11px; fill: #000; }
   .id-role {
-    font-size: 11px; color: var(--cyan-dim); margin-top: 3px;
-    letter-spacing: 0.8px;
+    font-size: 10.5px; color: var(--text-dim);
+    margin-top: 5px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
   }
 
-  /* Audio Track Cyber Player Card */
-  .cyber-player-card {
-    background: rgba(0,0,0,0.5);
-    border: 1px solid rgba(0, 243, 255, 0.2);
-    border-radius: 6px;
-    padding: 10px;
-    display: flex; flex-direction: column; gap: 6px;
-    flex-shrink: 0;
-  }
-  .player-info-row {
-    display: flex; align-items: center; justify-content: space-between;
-    font-size: 10px; color: var(--text-dim);
-  }
-  .player-track-name {
-    color: var(--cyan); font-weight: 600;
-    display: flex; align-items: center; gap: 6px;
-  }
-  .equalizer-bars {
-    display: flex; align-items: flex-end; gap: 2px; height: 14px;
-  }
-  .eq-bar {
-    width: 3px; background: var(--cyan); border-radius: 1px;
-    height: 3px; transition: height 0.1s ease;
-  }
-  .player-ctrls {
-    display: flex; align-items: center; justify-content: space-between; gap: 8px;
-    margin-top: 4px;
-  }
-  .music-btn {
-    background: rgba(0, 243, 255, 0.1);
-    border: 1px solid var(--panel-border);
-    color: var(--cyan);
-    padding: 4px 10px; border-radius: 4px;
-    font-family: var(--mono); font-size: 10px;
-    cursor: pointer; transition: 0.15s;
-    display: inline-flex; align-items: center; gap: 4px;
-  }
-  .music-btn:hover {
-    background: var(--cyan); color: #000;
-  }
-  .vol-slider {
-    flex: 1; height: 4px; accent-color: var(--cyan); cursor: pointer;
-  }
-
-  /* Telemetry Specs Grid */
   .specs-box {
-    background: rgba(0,0,0,0.4);
-    border: 1px solid rgba(255,255,255,0.06);
-    border-radius: 6px;
-    padding: 8px 10px;
+    background: var(--bg-inset);
+    border: 1px solid var(--border-soft);
+    border-radius: 8px;
+    padding: 11px 13px;
     display: grid; grid-template-columns: 1fr 1fr;
-    gap: 8px;
+    gap: 11px;
     font-size: 10px;
-    flex-shrink: 0;
   }
   .spec-item b {
-    display: block; color: var(--text-dim); font-size: 9px; letter-spacing: 0.5px;
+    display: block; color: var(--text-dim);
+    font-size: 8.5px; font-weight: 400;
+    letter-spacing: 1.2px;
+    margin-bottom: 2px;
   }
-  .spec-item span {
-    color: var(--cyan); font-weight: 600;
+  .spec-item span { color: var(--accent); font-weight: 600; letter-spacing: 0.5px; }
+
+  .metrics-section { display: flex; flex-direction: column; gap: 9px; }
+  .metric-label { display: flex; justify-content: space-between; font-size: 9.5px; color: var(--text-dim); letter-spacing: 1px; }
+  .metric-label span:last-child { color: var(--text-main); font-weight: 700; }
+  .metric-track { height: 4px; background: rgba(255,255,255,0.06); border-radius: 2px; overflow: hidden; }
+  .metric-fill {
+    height: 100%; width: 0;
+    border-radius: 2px;
+    background: linear-gradient(90deg, var(--accent), var(--pink));
+    transition: width 1.2s cubic-bezier(0.22, 1, 0.36, 1);
   }
 
-  /* Threat / Vulnerability Metrics */
-  .metrics-section {
-    display: flex; flex-direction: column; gap: 7px;
-    flex-shrink: 0;
+  .osc-card {
+    background: var(--bg-inset);
+    border: 1px solid var(--border-soft);
+    border-radius: 8px;
+    padding: 9px 11px;
   }
-  .metric-label {
-    display: flex; justify-content: space-between; font-size: 10px; color: var(--text-dim);
-  }
-  .metric-label span:last-child { color: var(--text-main); font-weight: 600; }
-  .metric-bar-bg {
-    height: 4px; background: rgba(255,255,255,0.06); border-radius: 2px; overflow: hidden;
-  }
-  .metric-bar-fill {
-    height: 100%; border-radius: 2px;
-    background: linear-gradient(90deg, var(--cyan), var(--pink));
-  }
-
-  /* Pulse Wave Oscilloscope */
-  .oscilloscope-card {
-    background: rgba(0,0,0,0.5);
-    border: 1px solid rgba(0, 243, 255, 0.15);
-    border-radius: 6px;
-    padding: 8px;
-    position: relative;
-    flex-shrink: 0;
-  }
-  .osc-header {
+  .osc-head {
     display: flex; justify-content: space-between;
-    font-size: 9px; color: var(--cyan-dim); margin-bottom: 4px;
+    font-size: 9px; color: var(--accent-dim);
+    margin-bottom: 5px; letter-spacing: 1px;
   }
-  #osc-canvas {
-    width: 100%; height: 38px; display: block;
-  }
+  #osc-canvas { width: 100%; height: 40px; display: block; }
 
-  /* Primary Action Button (Hire / Engagement) */
-  .hire-action-btn {
+  /* Music player card */
+  .player-card {
+    background: var(--bg-inset);
+    border: 1px solid var(--border-soft);
+    border-radius: 8px;
+    padding: 10px 12px;
+    display: flex; flex-direction: column; gap: 8px;
+  }
+  .player-row {
+    display: flex; align-items: center; justify-content: space-between;
+    font-size: 9.5px; color: var(--text-dim); letter-spacing: 0.5px;
+  }
+  .player-track { color: var(--accent); font-weight: 600; display: flex; align-items: center; gap: 6px; }
+  .eq-bars { display: flex; align-items: flex-end; gap: 2px; height: 13px; }
+  .eq-bar { width: 3px; height: 3px; background: var(--accent); border-radius: 1px; transition: height 0.1s ease; }
+  .player-ctrls { display: flex; align-items: center; gap: 10px; }
+  .music-btn {
+    background: var(--accent-soft);
+    border: 1px solid var(--border);
+    color: var(--accent);
+    padding: 5px 12px;
+    border-radius: 5px;
+    font-family: var(--mono); font-size: 9.5px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    letter-spacing: 1px;
+  }
+  .music-btn:hover { background: var(--accent); color: #000; }
+  .vol-slider { flex: 1; height: 4px; accent-color: var(--accent); cursor: pointer; }
+
+  .cta-row { display: flex; flex-direction: column; gap: 8px; }
+  .cta-btn {
     display: flex; align-items: center; justify-content: center; gap: 8px;
-    background: linear-gradient(90deg, var(--cyan), var(--purple));
-    color: #05070e;
+    text-decoration: none;
     font-family: var(--display);
     font-size: 11.5px; font-weight: 700;
-    letter-spacing: 1px;
-    text-decoration: none;
+    letter-spacing: 1.5px;
     text-transform: uppercase;
-    padding: 11px;
-    border-radius: 6px;
-    box-shadow: 0 0 20px rgba(0, 243, 255, 0.3);
-    transition: 0.2s transform, 0.2s filter;
-    flex-shrink: 0;
-    margin-top: 4px;
+    padding: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.18s ease, filter 0.18s ease, box-shadow 0.18s ease;
+    border: 1px solid transparent;
   }
-  .hire-action-btn:hover {
-    transform: translateY(-2px);
-    filter: brightness(1.15);
+  .cta-btn:hover { transform: translateY(-2px); filter: brightness(1.15); }
+  .cta-primary {
+    background: linear-gradient(90deg, var(--accent), var(--secondary));
+    color: #05070e;
+    box-shadow: 0 0 22px var(--glow);
   }
+  .cta-ghost {
+    background: transparent;
+    border-color: var(--border);
+    color: var(--accent);
+  }
+  .cta-ghost:hover { box-shadow: 0 0 16px var(--glow); }
 
-  /* ==========================================================
-     RIGHT PANEL: PERFECTLY SCROLLABLE INTERACTIVE TERMINAL
-     ========================================================== */
+  /* ============ RIGHT PANEL / TERMINAL ============ */
   .term-container {
-    flex: 1;
-    min-height: 0;
-    height: 100%;
+    flex: 1; min-height: 0; height: 100%;
     display: flex; flex-direction: column;
-    background: rgba(4, 7, 15, 0.95);
+    background: rgba(3, 6, 13, 0.92);
     font-size: 12.5px;
     line-height: 1.55;
-    position: relative;
     overflow: hidden;
   }
+  [data-theme="matrix"] .term-container { background: rgba(2, 10, 5, 0.92); }
+  [data-theme="amber"] .term-container  { background: rgba(12, 8, 2, 0.92); }
+  [data-theme="crimson"] .term-container{ background: rgba(13, 3, 7, 0.92); }
 
   .term-logs {
-    flex: 1;
-    min-height: 0;
-    overflow-y: scroll;
-    overflow-x: hidden;
+    flex: 1; min-height: 0;
+    overflow-y: scroll; overflow-x: hidden;
     padding: 16px 18px 20px;
     display: flex; flex-direction: column; gap: 8px;
-    scroll-behavior: smooth;
+    overscroll-behavior: contain;
   }
   .term-logs::-webkit-scrollbar { width: 6px; }
-  .term-logs::-webkit-scrollbar-track { background: rgba(0, 0, 0, 0.3); }
-  .term-logs::-webkit-scrollbar-thumb { background: var(--panel-border); border-radius: 3px; }
-  .term-logs::-webkit-scrollbar-thumb:hover { background: var(--cyan); }
+  .term-logs::-webkit-scrollbar-track { background: rgba(0,0,0,0.3); }
+  .term-logs::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+  .term-logs::-webkit-scrollbar-thumb:hover { background: var(--accent); }
 
-  .term-line {
-    word-break: break-word;
-  }
-  .term-line.sys { color: var(--cyan-dim); }
+  .term-line { word-break: break-word; user-select: text; }
+  .term-line.sys     { color: var(--accent-dim); }
   .term-line.success { color: var(--green); }
-  .term-line.warn { color: var(--yellow); }
-  .term-line.danger { color: var(--pink); }
-  .term-line.output { color: #d1d9e6; }
-  .term-line.cmd { color: #ffffff; font-weight: 600; }
-  .term-line.ai-resp {
-    color: #edf2f7;
-    background: rgba(0, 243, 255, 0.05);
-    border-left: 3px solid var(--cyan);
+  .term-line.warn    { color: var(--yellow); }
+  .term-line.danger  { color: var(--pink); }
+  .term-line.output  { color: #d3dcea; white-space: pre-wrap; }
+  .term-line.cmd     { color: #ffffff; font-weight: 600; }
+  .ai-resp {
+    color: var(--text-main);
+    background: var(--accent-soft);
+    border-left: 3px solid var(--accent);
     padding: 10px 14px;
-    border-radius: 0 6px 6px 0;
+    border-radius: 0 8px 8px 0;
     margin: 6px 0;
-    box-shadow: inset 0 0 15px rgba(0, 243, 255, 0.03);
-    line-height: 1.6;
+    line-height: 1.65;
     white-space: pre-wrap;
+    user-select: text;
   }
-  .term-prompt { color: var(--cyan); font-weight: 600; margin-right: 8px; }
+  .term-prompt { color: var(--accent); font-weight: 700; margin-right: 8px; }
   .ai-tag {
-    color: var(--cyan);
-    font-weight: 700;
-    text-shadow: 0 0 8px var(--cyan);
+    color: var(--accent); font-weight: 700;
+    text-shadow: 0 0 8px var(--accent-dim);
     margin-right: 6px;
   }
-
   .term-ascii {
-    color: var(--cyan);
-    font-size: 10px;
+    color: var(--accent);
+    font-size: 9.5px;
     line-height: 1.15;
     white-space: pre;
-    text-shadow: 0 0 8px var(--cyan);
+    text-shadow: 0 0 8px var(--accent-dim);
     margin: 6px 0 10px;
   }
+  .thinking { color: var(--accent); animation: blink 0.8s infinite; }
 
-  .term-bottom-bar {
+  .term-bottom {
     flex-shrink: 0;
-    border-top: 1px solid rgba(255,255,255,0.08);
+    border-top: 1px solid var(--border-soft);
     background: rgba(8, 12, 24, 0.95);
-    display: flex; flex-direction: column;
   }
-
-  .term-chips-wrap {
-    padding: 6px 14px 2px;
-  }
-  .term-chips {
-    display: flex; gap: 6px; flex-wrap: wrap;
-  }
+  .chips-wrap { padding: 8px 14px 4px; }
+  .chips { display: flex; gap: 6px; flex-wrap: wrap; }
   .chip {
-    background: rgba(0, 243, 255, 0.08);
-    border: 1px solid var(--panel-border);
-    color: var(--cyan);
-    padding: 3px 8px;
-    border-radius: 4px;
-    font-size: 10.5px;
+    background: var(--accent-soft);
+    border: 1px solid var(--border);
+    color: var(--accent);
+    padding: 4px 10px;
+    border-radius: 5px;
+    font-size: 10px;
     cursor: pointer;
-    transition: 0.15s;
+    transition: all 0.15s ease;
+    letter-spacing: 0.5px;
+    user-select: none;
   }
-  .chip:hover {
-    background: var(--cyan); color: #000;
-  }
-
-  .term-input-row {
-    height: 44px;
+  .chip:hover { background: var(--accent); color: #000; box-shadow: 0 0 10px var(--glow); }
+  .input-row {
+    height: 46px;
     display: flex; align-items: center;
     padding: 0 16px; gap: 10px;
   }
-  .term-input-row .prompt {
-    color: var(--cyan); font-weight: 700; white-space: nowrap;
-  }
-  .term-input-field {
+  .input-row .prompt { color: var(--accent); font-weight: 700; white-space: nowrap; font-size: 12px; }
+  #term-input {
     flex: 1;
     background: transparent;
     border: none; outline: none;
     color: #fff;
     font-family: var(--mono);
     font-size: 13px;
+    caret-color: var(--accent);
+  }
+  .input-row kbd {
+    color: var(--text-dim);
+    font-size: 9px;
+    border: 1px solid var(--border-soft);
+    border-radius: 4px;
+    padding: 2px 6px;
+    white-space: nowrap;
   }
 
-  .thinking-spinner {
-    display: inline-block;
-    color: var(--cyan);
-    animation: blink 0.8s infinite;
-  }
-
-  /* Responsive styling */
-  @media (max-width: 860px) {
-    body { overflow-y: auto; }
+  /* ============ RESPONSIVE ============ */
+  @media (max-width: 900px) {
+    body { overflow-y: auto; overflow-x: hidden; }
     #workspace {
       position: static;
       grid-template-columns: 1fr;
-      margin: 46px 10px 14px 10px;
       height: auto;
+      margin: 56px 10px 16px;
       gap: 12px;
     }
-    .cyber-win { min-height: 520px; }
+    .cyber-win { min-height: auto; max-height: none; }
+    .term-logs { max-height: 60vh; }
+    .hud-center-text { display: none; }
+    .avatar-hud { width: 96px; height: 96px; }
+    .input-row kbd { display: none; }
+  }
+
+  /* ============ REDUCED MOTION ============ */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+    #matrix-canvas { opacity: 0.12; }
   }
 </style>
 </head>
 <body class="crt">
 
-<canvas id="matrix-canvas"></canvas>
-<div class="vignette"></div>
+<canvas id="matrix-canvas" aria-hidden="true"></canvas>
+<div class="vignette" aria-hidden="true"></div>
 
-<!-- Top HUD Bar -->
+<!-- ============ TOP HUD BAR ============ -->
 <header class="hud-topbar">
-  <div class="hud-left">
-    <span class="live-dot"></span>
-    <span>SYS_NODE: <span class="hud-tag">yedek.root</span></span>
-    <span>STATUS: <span class="hud-tag">OPERATIONAL // ROOT_ACTIVE</span></span>
+  <div class="hud-side">
+    <span class="live-dot" aria-hidden="true"></span>
+    <span>SYS: <span class="hud-tag">yedek.core</span></span>
+    <span class="hud-center-text">// Offensive Security Operations</span>
   </div>
-  <div class="hud-center">
-    <span>// LEVEL 5 CLEARANCE · OFFENSIVE RESEARCH OPS</span>
-  </div>
-  <div class="hud-right">
-    <button class="hud-btn" id="audio-toggle" title="Toggle Sound FX">
-      <svg id="audio-icon" width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>
-      <span id="audio-label">SFX: ON</span>
+  <div class="hud-side">
+    <button class="hud-btn" id="audio-toggle" title="Toggle sound effects" aria-label="Toggle sound effects">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>
+      <span id="audio-label">SFX ON</span>
     </button>
-    <button class="hud-btn" id="theme-btn">THEME: CYAN</button>
-    <span>UPTIME: <span id="uptime" class="hud-tag">00:00:00</span></span>
+    <button class="hud-btn" id="theme-btn" aria-label="Change theme">THEME · CYAN</button>
+    <span>UPTIME <span id="uptime" class="hud-tag">00:00:00</span></span>
   </div>
 </header>
 
-<!-- ==========================================================
-     PRO CYBERSECURITY BOOT TERMINAL GATE SCREEN
-     ========================================================== -->
-<div id="gate">
-  <div class="boot-terminal-box">
-    <div class="boot-header">
-      <span>GATEWAY_AUTH // KERNEL_DECRYPT_V4.8</span>
-      <span style="color:var(--text-dim);font-size:10px;">HOST: SEC_NODE_01</span>
+<!-- ============ BOOT GATE ============ -->
+<div id="gate" role="dialog" aria-label="Access gateway">
+  <div class="gate-box">
+    <div class="gate-header">
+      <span>ACCESS_GATEWAY // KERNEL_v4.8</span>
+      <span class="sub">SEC_NODE_01 · TLS 1.3</span>
     </div>
-
-    <div class="boot-body">
-      <div class="boot-ascii">
+    <div class="gate-body">
+      <div class="gate-ascii">
 ██╗   ██╗███████╗██████╗ ███████╗██╗  ██╗
 ╚██╗ ██╔╝██╔════╝██╔══██╗██╔════╝██║ ██╔╝
- ╚████╔╝ █████╗  ██║  ██║█████╗  █████╔╝ 
-  ╚██╔╝  ██╔══╝  ██║  ██║██╔══╝  ██╔═██╗ 
+ ╚████╔╝ █████╗  ██║  ██║█████╗  █████╔╝
+  ╚██╔╝  ██╔══╝  ██║  ██║██╔══╝  ██╔═██╗
    ██║   ███████╗██████╔╝███████╗██║  ██╗
    ╚═╝   ╚══════╝╚═════╝ ╚══════╝╚═╝  ╚═╝
-[ ROOT SECURITY OPERATIONS CENTER // ACCESS GATEWAY ]</div>
+[ SECURITY OPERATIONS CENTER // GATEWAY ]</div>
 
-      <!-- Live Boot Diagnostics Log Stream -->
-      <div class="boot-logs" id="boot-logs-stream">
-        <div class="boot-line ok">[ BIOS ] YEDEK SECURE CORE v4.8.2-PRO INITIALIZED</div>
-        <div class="boot-line ok">[ CPU  ] 16x QUANTUM NEURAL PROCESSORS @ 5.2 GHz ... OK</div>
-        <div class="boot-line ok">[ MEM  ] 64GB ECC ENCRYPTED MEMORY [AES-XTS-512] ... OK</div>
-        <div class="boot-line ok">[ NET  ] ESTABLISHING ENCRYPTED SAT-LINK TUNNEL ... CONNECTED</div>
-        <div class="boot-line info">[ AUTH ] VALIDATING ED25519 MASTER SIGNATURE FOR root@yedek ... VERIFIED</div>
-        <div class="boot-line warn">[ WARN ] TARGET ARCHITECTURE: TIER-1 FINANCIAL & CRYPTO EXCHANGES</div>
-        <div class="boot-line crit">[ STAT ] 3.5+ YRS COMBAT OPS · ZERO-DAY DEFENSE PROTOCOL ACTIVE</div>
+      <div class="gate-log" id="gate-log" aria-hidden="true"></div>
+
+      <div class="gate-progress">
+        <div class="gp-row"><span>SYSTEM DECRYPTION</span><b id="gp-pct">0%</b></div>
+        <div class="gp-track"><div class="gp-fill" id="gp-fill"></div></div>
       </div>
 
-      <!-- Decryption Gauge -->
-      <div class="decrypt-progress-wrap">
-        <div class="decrypt-info">
-          <span>SECTOR DECRYPTION STATUS</span>
-          <span id="decrypt-pct">0%</span>
-        </div>
-        <div class="decrypt-bar-bg">
-          <div class="decrypt-bar-fill" id="decrypt-fill"></div>
-        </div>
-      </div>
-
-      <!-- Main Authenticate & Enter Button -->
-      <button class="boot-enter-btn" id="boot-btn">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
-        <span>EXECUTE ROOT AUTHENTICATION</span>
+      <button class="gate-enter" id="gate-enter">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+        <span>Initialize Session</span>
+        <kbd>ENTER</kbd>
       </button>
 
-      <div class="boot-hint">PRESS <b>[ENTER]</b> OR CLICK TO INITIALIZE HUD INTERFACE & SOUNDTRACK</div>
+      <div class="gate-hint">AUDIO EXPERIENCE ENABLED ON ENTRY · HEADPHONES RECOMMENDED</div>
     </div>
   </div>
 </div>
 
-<!-- Main Cyber GUI Grid -->
+<!-- ============ WORKSPACE ============ -->
 <main id="workspace">
 
-  <!-- Left Column: Identity & Telemetry -->
+  <!-- LEFT: IDENTITY PANEL -->
   <section class="cyber-win">
     <div class="win-header">
       <div class="win-title">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 7l10 5 10-5-10-5zm0 9l-10-5v9l10 5 10-5V6l-10 5z"/></svg>
-        TARGET_PROFILE.SYS
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5zm0 9l-10-5v9l10 5 10-5V7l-10 5z"/></svg>
+        PROFILE.SYS
       </div>
-      <div class="win-controls">
-        <div class="win-dot y"></div>
-        <div class="win-dot g"></div>
-        <div class="win-dot r"></div>
-      </div>
+      <div class="win-controls" aria-hidden="true"><div class="win-dot y"></div><div class="win-dot g"></div><div class="win-dot r"></div></div>
     </div>
 
     <div class="profile-scroll">
       <div class="avatar-hud">
-        <div class="avatar-hud-ring"></div>
-        <div class="avatar-img"></div>
-        <div class="avatar-status-badge">#1 RANK</div>
+        <div class="avatar-ring" aria-hidden="true"></div>
+        <div class="avatar-img" role="img" aria-label="yedek avatar"></div>
+        <div class="avatar-badge">ACTIVE</div>
       </div>
 
       <div class="id-details">
-        <div class="id-name">
+        <h1 class="id-name">
           yedek
-          <span class="verified-badge" title="Verified HackerOne Elite">
-            <svg viewBox="0 0 24 24"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg>
+          <span class="verified-badge" title="Verified security researcher">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg>
           </span>
-        </div>
-        <div class="id-role">OFFENSIVE SECURITY · RED TEAM · 3.5+ YRS EXP</div>
+        </h1>
+        <div class="id-role">Offensive Security · Red Team · 3.5+ Years</div>
       </div>
 
-      <!-- Cyber Soundtrack Player HUD -->
-      <div class="cyber-player-card">
-        <div class="player-info-row">
-          <span class="player-track-name">
-            <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
-            OST: 0x01_NEURAL_BREACH
+      <!-- Music player -->
+      <div class="player-card">
+        <div class="player-row">
+          <span class="player-track">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
+            BGM · NEURAL_BREACH
           </span>
-          <div class="equalizer-bars" id="eq-bars">
-            <div class="eq-bar"></div>
-            <div class="eq-bar"></div>
-            <div class="eq-bar"></div>
-            <div class="eq-bar"></div>
-            <div class="eq-bar"></div>
+          <div class="eq-bars" id="eq-bars" aria-hidden="true">
+            <div class="eq-bar"></div><div class="eq-bar"></div><div class="eq-bar"></div><div class="eq-bar"></div><div class="eq-bar"></div>
           </div>
         </div>
         <div class="player-ctrls">
-          <button class="music-btn" id="music-play-btn">
-            <span id="music-btn-text">PAUSE BGM</span>
-          </button>
-          <input type="range" class="vol-slider" id="music-vol" min="0" max="1" step="0.05" value="0.5" title="Volume">
+          <button class="music-btn" id="music-btn"><span id="music-btn-text">PLAY</span></button>
+          <input type="range" class="vol-slider" id="music-vol" min="0" max="1" step="0.05" value="0.5" aria-label="Music volume">
         </div>
       </div>
 
-      <!-- Specs Box -->
+      <!-- Specs -->
       <div class="specs-box">
-        <div class="spec-item">
-          <b>CLEARANCE:</b>
-          <span>ROOT // LEVEL 5</span>
-        </div>
-        <div class="spec-item">
-          <b>EXPERIENCE:</b>
-          <span>3.5+ YEARS</span>
-        </div>
-        <div class="spec-item">
-          <b>EXCHANGES SAVED:</b>
-          <span>MULTIPLE TIER-1</span>
-        </div>
-        <div class="spec-item">
-          <b>RATE ESTIMATE:</b>
-          <span>$50 - $70 / HR</span>
-        </div>
+        <div class="spec-item"><b>CLEARANCE</b><span>ROOT / LVL 5</span></div>
+        <div class="spec-item"><b>EXPERIENCE</b><span>3.5+ YEARS</span></div>
+        <div class="spec-item"><b>FOCUS</b><span>WEB / API / CRYPTO</span></div>
+        <div class="spec-item"><b>STATUS</b><span style="color:var(--green)">AVAILABLE</span></div>
       </div>
 
-      <!-- Network Oscilloscope -->
-      <div class="oscilloscope-card">
-        <div class="osc-header">
-          <span>PACKET_TELEMETRY: ACTIVE</span>
-          <span id="osc-freq">4.8 GHz</span>
-        </div>
-        <canvas id="osc-canvas"></canvas>
+      <!-- Oscilloscope -->
+      <div class="osc-card">
+        <div class="osc-head"><span>PACKET TELEMETRY</span><span id="osc-freq">LIVE</span></div>
+        <canvas id="osc-canvas" aria-hidden="true"></canvas>
       </div>
 
-      <!-- Focus Metrics -->
-      <div class="metrics-section">
-        <div class="metric-label">
-          <span>EXCHANGE & FINANCIAL DEFENSE</span>
-          <span>99.8%</span>
-        </div>
-        <div class="metric-bar-bg">
-          <div class="metric-bar-fill" style="width: 99.8%;"></div>
-        </div>
-
-        <div class="metric-label">
-          <span>WEB & API PENETRATION TESTING</span>
-          <span>98.5%</span>
-        </div>
-        <div class="metric-bar-bg">
-          <div class="metric-bar-fill" style="width: 98.5%;"></div>
-        </div>
-
-        <div class="metric-label">
-          <span>ZERO-DAY & REVERSE ENGINEERING</span>
-          <span>95.2%</span>
-        </div>
-        <div class="metric-bar-bg">
-          <div class="metric-bar-fill" style="width: 95.2%;"></div>
-        </div>
+      <!-- Metrics -->
+      <div class="metrics-section" id="metrics-section">
+        <div class="metric-label"><span>EXCHANGE &amp; FINANCIAL DEFENSE</span><span>99%</span></div>
+        <div class="metric-track"><div class="metric-fill" data-w="99%"></div></div>
+        <div class="metric-label"><span>WEB &amp; API PENETRATION TESTING</span><span>96%</span></div>
+        <div class="metric-track"><div class="metric-fill" data-w="96%"></div></div>
+        <div class="metric-label"><span>ZERO-DAY &amp; REVERSE ENGINEERING</span><span>92%</span></div>
+        <div class="metric-track"><div class="metric-fill" data-w="92%"></div></div>
       </div>
 
-      <!-- Direct Hire Action Button -->
-      <a class="hire-action-btn" href="mailto:yedekhesap145566@gmail.com?subject=Security%20Engagement%20Request&body=Hi%20yedek%2C%0A%0AWe%20would%20like%20to%20discuss%20a%20security%20audit%20engagement...">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-        INITIATE ENGAGEMENT (HIRE ME) →
-      </a>
+      <!-- CTAs -->
+      <div class="cta-row">
+        <a class="cta-btn cta-primary" href="mailto:yedekhesap145566@gmail.com?subject=Security%20Engagement%20Request">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+          Hire Me →
+        </a>
+        <a class="cta-btn cta-ghost" href="https://github.com/seqwraww" target="_blank" rel="noopener noreferrer">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2 0 1.9 1.2 1.9 1.2 1 1.8 2.8 1.3 3.5 1 0-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.2.5-2.3 1.3-3.1-.2-.4-.6-1.6.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 5 18.3 5.3 18.3 5.3c.7 1.6.3 2.8.1 3.2.8.8 1.3 1.9 1.3 3.1 0 4.7-2.8 5.7-5.5 6 .4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .3"/></svg>
+          GitHub
+        </a>
+        <button class="cta-btn cta-ghost" id="copy-email-btn" type="button">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          <span id="copy-email-text">Copy E-Mail</span>
+        </button>
+      </div>
     </div>
   </section>
 
-  <!-- Right Column: Interactive Terminal & AI Chat (Scroll Fixed) -->
+  <!-- RIGHT: TERMINAL -->
   <section class="cyber-win">
     <div class="win-header">
       <div class="win-title">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zM4 18V8h16v10H4zm2-8h2v2H6zm0 4h2v2H6zm4-4h8v2h-8zm0 4h5v2h-5z"/></svg>
-        yedek-cli@neural-core: ~ (bash / root)
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zM4 18V8h16v10H4zm2-8h2v2H6zm0 4h2v2H6zm4-4h8v2h-8zm0 4h5v2h-5z"/></svg>
+        yedek@neural-core: ~ (root)
       </div>
-      <div class="win-controls">
-        <div class="win-dot y"></div>
-        <div class="win-dot g"></div>
-        <div class="win-dot r"></div>
-      </div>
+      <div class="win-controls" aria-hidden="true"><div class="win-dot y"></div><div class="win-dot g"></div><div class="win-dot r"></div></div>
     </div>
 
     <div class="term-container">
-      <!-- Scrollable Logs Area -->
-      <div class="term-logs" id="term-logs">
-        <!-- Lines injected via JS -->
-      </div>
+      <div class="term-logs" id="term-logs" aria-live="polite"></div>
 
-      <!-- Fixed Bottom Toolbar & Input Field -->
-      <div class="term-bottom-bar">
-        <div class="term-chips-wrap">
-          <div class="term-chips">
+      <div class="term-bottom">
+        <div class="chips-wrap">
+          <div class="chips">
             <span class="chip" data-cmd="help">help</span>
             <span class="chip" data-cmd="whoami">whoami</span>
             <span class="chip" data-cmd="skills">skills</span>
             <span class="chip" data-cmd="experience">experience</span>
-            <span class="chip" data-cmd="pricing">pricing & rates</span>
-            <span class="chip" data-cmd="how to hire">how to hire</span>
-            <span class="chip" data-cmd="scan">scan target</span>
-            <span class="chip" data-cmd="How did you save the exchange platforms?">exchange defense</span>
+            <span class="chip" data-cmd="pricing">pricing</span>
+            <span class="chip" data-cmd="hire">hire</span>
+            <span class="chip" data-cmd="contact">contact</span>
+            <span class="chip" data-cmd="scan">scan</span>
             <span class="chip" data-cmd="matrix">matrix</span>
             <span class="chip" data-cmd="clear">clear</span>
           </div>
         </div>
-
-        <div class="term-input-row">
-          <span class="prompt">root@yedek:~#</span>
-          <input type="text" class="term-input-field" id="term-input" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Talk with yedek or run a command (e.g. 'whoami', 'pricing', 'how to hire')...">
+        <div class="input-row">
+          <label class="prompt" for="term-input">root@yedek:~#</label>
+          <input type="text" id="term-input" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Type a command or just talk to me...">
+          <kbd>TAB · complete</kbd>
         </div>
       </div>
     </div>
   </section>
 
 </main>
-
 <script>
-  /* ==========================================================
-     INTELLIGENT DYNAMIC CONVERSATION ENGINE (100% IMMERSIVE)
-     ========================================================== */
-  function getDynamicYedekReply(userText) {
-    const raw = userText.trim();
-    const q = raw.toLowerCase();
+(function () {
+  'use strict';
 
-    // PRICING / RATES / COST
-    if (q.includes("price") || q.includes("pricing") || q.includes("cost") || q.includes("rate") || q.includes("fee") || q.includes("how much") || q.includes("charge")) {
-      return `My pricing is straightforward and accessible. Good security shouldn't break the bank for growing companies and projects:
-
-• **Hourly Rate:** ~$50 - $70 / hour for focused vulnerability hunting, code review, or API testing.
-• **Basic Web/API Audit:** $500 – $1,500 (Comprehensive manual testing + actionable PoC report).
-• **Full Exchange / Infra Assessment:** Custom quote based on scope and architecture complexity.
-
-If you have a specific target or budget in mind, shoot me an email at **yedekhesap145566@gmail.com** or hit the **INITIATE ENGAGEMENT** button.`;
-    }
-
-    // HIRE / WORK TOGETHER
-    if (q.includes("hire") || q.includes("work with you") || q.includes("contract") || q.includes("engage") || q.includes("collaborate")) {
-      return `Hiring me for a security audit or penetration test is simple:
-
-1. **Scoping & NDA:** We outline the target scope (web apps, APIs, smart contracts, cloud infrastructure) and sign mutual authorization.
-2. **Deep Manual Penetration Testing:** I dive in manually to find high-impact logic flaws, race conditions, and zero-day attack vectors that automated tools miss.
-3. **Actionable Remediation Report:** You get a full technical breakdown with reproducible Proof-of-Concepts (PoCs) and immediate developer fixes.
-
-Ready to secure your systems? Email me at **yedekhesap145566@gmail.com** or use the **INITIATE ENGAGEMENT (HIRE ME)** button in the left panel.`;
-    }
-
-    // GREETINGS & SMALL TALK
-    if (q === "hi" || q === "hello" || q === "hey" || q === "yo" || q === "sup" || q === "selam" || q.includes("how are you")) {
-      return "Hey! What's up? I'm **yedek**. Systems are active and telemetry is live. Always on the hunt for new security challenges and projects. What's on your mind?";
-    }
-
-    // WHO ARE YOU / IDENTITY
-    if (q.includes("who are you") || q.includes("tell me about yourself") || q.includes("who r u") || q.includes("introduce")) {
-      return "I'm **yedek**. I've been hacking and researching offensive security for over **3.5 years**. Over this time, I've specialized in breaking complex financial systems and web APIs, and I've personally protected multiple major crypto and stock exchange platforms from multi-million dollar zero-day breaches.";
-    }
-
-    // 3.5 YEARS EXPERIENCE & EXCHANGES
-    if (q.includes("exchange") || q.includes("3.5") || q.includes("crypto") || q.includes("save") || q.includes("story") || q.includes("experience")) {
-      return `**My 3.5-Year Track Record & Exchange Defense:**
-For over 3.5+ years, I've focused on high-throughput exchange architectures where standard tools fail.
-Key highlights:
-• **Race Condition Exploits:** Discovered and patched critical concurrency bugs in exchange hot-wallet withdrawal logic that allowed simultaneous double-spends in sub-millisecond windows.
-• **Order-Matching & Balance Bypasses:** Identified authorization flaws in WebSocket order-book engines before malicious actors could manipulate market liquidity.
-• **Cloud Infrastructure Hardening:** Locked down internal microservices against blind SSRF and metadata exfiltration attacks.`;
-    }
-
-    // VULNERABILITIES (SSRF, RCE, IDOR, ETC.)
-    if (q.includes("ssrf")) {
-      return "SSRF (Server-Side Request Forgery) forces a vulnerable server to send requests to internal resources. In cloud environments, it's often leveraged against AWS IMDSv1 (`169.254.169.254`) or internal microservices (Redis, Elasticsearch) to pivot and escalate privileges.";
-    }
-    if (q.includes("rce") || q.includes("remote code")) {
-      return "RCE (Remote Code Execution) allows an attacker to execute arbitrary system commands on the target host. It typically stems from insecure deserialization, unvalidated command wrappers, or memory corruption bugs.";
-    }
-    if (q.includes("idor") || q.includes("access control")) {
-      return "IDOR occurs when an application exposes a reference to an internal object without proper authorization checks. In financial and exchange APIs, this often leads to unauthorized account takeovers and balance leaks.";
-    }
-
-    // DEFAULT IMMERSIVE HACKER REPLY
-    return `Looking into "${raw}" from a security perspective. Over my 3.5+ years auditing architectures and breaking systems, true resilience comes from understanding structural business logic. Let me know if you want to inspect a specific target or discuss an audit!`;
-  }
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   /* ==========================================================
-     ADVANCED CYBERPUNK SYNTHESIZER & SOUNDTRACK ENGINE
+     AUDIO ENGINE (SFX + generative BGM)
      ========================================================== */
-  let audioEnabled = true;
-  let musicPlaying = false;
-  let audioCtx = null;
-  let masterGain = null;
-  let bgmGain = null;
-  let musicInterval = null;
+  var audioEnabled = true;
+  var musicPlaying = false;
+  var audioCtx = null;
+  var masterGain = null;
+  var bgmGain = null;
+  var musicInterval = null;
+  var step = 0;
 
   function initAudioEngine() {
     if (!audioCtx) {
-      const AudioContext = window.AudioContext || window.webkitAudioContext;
-      if (AudioContext) {
-        audioCtx = new AudioContext();
-        masterGain = audioCtx.createGain();
-        masterGain.gain.setValueAtTime(1, audioCtx.currentTime);
-        masterGain.connect(audioCtx.destination);
-
-        bgmGain = audioCtx.createGain();
-        bgmGain.gain.setValueAtTime(0.35, audioCtx.currentTime);
-        bgmGain.connect(masterGain);
-      }
+      var AC = window.AudioContext || window.webkitAudioContext;
+      if (!AC) return;
+      audioCtx = new AC();
+      masterGain = audioCtx.createGain();
+      masterGain.gain.setValueAtTime(1, audioCtx.currentTime);
+      masterGain.connect(audioCtx.destination);
+      bgmGain = audioCtx.createGain();
+      bgmGain.gain.setValueAtTime(0.35, audioCtx.currentTime);
+      bgmGain.connect(masterGain);
     }
-    if (audioCtx && audioCtx.state === 'suspended') {
-      audioCtx.resume();
-    }
+    if (audioCtx.state === 'suspended') audioCtx.resume();
   }
 
-  function playTone(freq = 600, duration = 0.04, type = 'sine') {
+  function playTone(freq, duration, type) {
     if (!audioEnabled || !audioCtx) return;
     try {
-      const osc = audioCtx.createOscillator();
-      const gain = audioCtx.createGain();
-      osc.type = type;
+      var osc = audioCtx.createOscillator();
+      var gain = audioCtx.createGain();
+      osc.type = type || 'sine';
       osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
       gain.gain.setValueAtTime(0.04, audioCtx.currentTime);
       gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
-      osc.connect(gain);
-      gain.connect(masterGain);
-      osc.start();
-      osc.stop(audioCtx.currentTime + duration);
-    } catch(e) {}
+      osc.connect(gain); gain.connect(masterGain);
+      osc.start(); osc.stop(audioCtx.currentTime + duration);
+    } catch (e) {}
   }
 
-  const synthScale = [146.83, 164.81, 174.61, 196.00, 220.00, 261.63, 293.66, 329.63, 349.23, 392.00];
-  const bassRoots = [73.42, 65.41, 87.31, 58.27];
-  let step = 0;
+  var synthScale = [146.83, 164.81, 174.61, 196.00, 220.00, 261.63, 293.66, 329.63, 349.23, 392.00];
+  var bassRoots = [73.42, 65.41, 87.31, 58.27];
 
-  function playSynthNote(freq, dur = 0.22, filterCutoff = 1200) {
+  function playSynthNote(freq, dur, cutoff) {
     if (!audioCtx || !musicPlaying) return;
     try {
-      const osc = audioCtx.createOscillator();
-      const filter = audioCtx.createBiquadFilter();
-      const gain = audioCtx.createGain();
-
+      var osc = audioCtx.createOscillator();
+      var filter = audioCtx.createBiquadFilter();
+      var gain = audioCtx.createGain();
       osc.type = 'sawtooth';
       osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
-
       filter.type = 'lowpass';
-      filter.frequency.setValueAtTime(filterCutoff, audioCtx.currentTime);
+      filter.frequency.setValueAtTime(cutoff || 1200, audioCtx.currentTime);
       filter.frequency.exponentialRampToValueAtTime(200, audioCtx.currentTime + dur);
       filter.Q.setValueAtTime(4, audioCtx.currentTime);
-
       gain.gain.setValueAtTime(0.09, audioCtx.currentTime);
       gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + dur);
-
-      osc.connect(filter);
-      filter.connect(gain);
-      gain.connect(bgmGain);
-
-      osc.start();
-      osc.stop(audioCtx.currentTime + dur);
-    } catch(e) {}
+      osc.connect(filter); filter.connect(gain); gain.connect(bgmGain);
+      osc.start(); osc.stop(audioCtx.currentTime + dur);
+    } catch (e) {}
   }
 
-  function playSubBass(freq, dur = 1.6) {
+  function playSubBass(freq, dur) {
     if (!audioCtx || !musicPlaying) return;
     try {
-      const osc = audioCtx.createOscillator();
-      const filter = audioCtx.createBiquadFilter();
-      const gain = audioCtx.createGain();
-
+      var osc = audioCtx.createOscillator();
+      var filter = audioCtx.createBiquadFilter();
+      var gain = audioCtx.createGain();
       osc.type = 'triangle';
       osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
-
       filter.type = 'lowpass';
       filter.frequency.setValueAtTime(320, audioCtx.currentTime);
-
       gain.gain.setValueAtTime(0.22, audioCtx.currentTime);
       gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + dur);
-
-      osc.connect(filter);
-      filter.connect(gain);
-      gain.connect(bgmGain);
-
-      osc.start();
-      osc.stop(audioCtx.currentTime + dur);
-    } catch(e) {}
+      osc.connect(filter); filter.connect(gain); gain.connect(bgmGain);
+      osc.start(); osc.stop(audioCtx.currentTime + dur);
+    } catch (e) {}
   }
 
   function playCyberBeat() {
     if (!audioCtx || !musicPlaying) return;
-
-    if (step % 16 === 0) {
-      const rootIdx = Math.floor(step / 16) % bassRoots.length;
-      playSubBass(bassRoots[rootIdx], 2.2);
-    }
-
+    if (step % 16 === 0) playSubBass(bassRoots[Math.floor(step / 16) % bassRoots.length], 2.2);
     if (step % 2 === 0 || Math.random() > 0.3) {
-      const note = synthScale[(step * 3 + Math.floor(Math.random()*2)) % synthScale.length];
-      const cutoff = 700 + Math.sin(step * 0.2) * 500;
-      playSynthNote(note, 0.24, cutoff);
+      var note = synthScale[(step * 3 + Math.floor(Math.random() * 2)) % synthScale.length];
+      playSynthNote(note, 0.24, 700 + Math.sin(step * 0.2) * 500);
     }
-
-    const eqBars = document.querySelectorAll('.eq-bar');
-    eqBars.forEach(bar => {
-      bar.style.height = musicPlaying ? `${Math.floor(4 + Math.random() * 12)}px` : '3px';
+    var bars = document.querySelectorAll('.eq-bar');
+    bars.forEach(function (bar) {
+      bar.style.height = musicPlaying ? Math.floor(4 + Math.random() * 10) + 'px' : '3px';
     });
-
     step++;
   }
 
@@ -1087,100 +930,102 @@ Key highlights:
     musicPlaying = true;
     if (musicInterval) clearInterval(musicInterval);
     musicInterval = setInterval(playCyberBeat, 135);
-    document.getElementById('music-btn-text').textContent = 'PAUSE BGM';
+    document.getElementById('music-btn-text').textContent = 'PAUSE';
   }
 
   function pauseBGM() {
     musicPlaying = false;
     if (musicInterval) clearInterval(musicInterval);
-    document.getElementById('music-btn-text').textContent = 'PLAY BGM';
-    document.querySelectorAll('.eq-bar').forEach(b => b.style.height = '3px');
+    document.getElementById('music-btn-text').textContent = 'PLAY';
+    document.querySelectorAll('.eq-bar').forEach(function (b) { b.style.height = '3px'; });
   }
 
-  const musicPlayBtn = document.getElementById('music-play-btn');
-  musicPlayBtn.addEventListener('click', () => {
-    if (musicPlaying) pauseBGM();
-    else startBGM();
+  document.getElementById('music-btn').addEventListener('click', function () {
+    if (musicPlaying) pauseBGM(); else startBGM();
   });
 
-  const musicVolSlider = document.getElementById('music-vol');
-  musicVolSlider.addEventListener('input', (e) => {
-    if (bgmGain && audioCtx) {
-      bgmGain.gain.setValueAtTime(parseFloat(e.target.value) * 0.6, audioCtx.currentTime);
-    }
+  document.getElementById('music-vol').addEventListener('input', function (e) {
+    if (bgmGain && audioCtx) bgmGain.gain.setValueAtTime(parseFloat(e.target.value) * 0.6, audioCtx.currentTime);
   });
 
-  const audioToggleBtn = document.getElementById('audio-toggle');
-  const audioLabel = document.getElementById('audio-label');
-  audioToggleBtn.addEventListener('click', () => {
+  document.getElementById('audio-toggle').addEventListener('click', function () {
     audioEnabled = !audioEnabled;
-    audioLabel.textContent = audioEnabled ? 'SFX: ON' : 'SFX: MUTED';
-    if(audioEnabled) playTone(880, 0.08, 'triangle');
+    document.getElementById('audio-label').textContent = audioEnabled ? 'SFX ON' : 'SFX OFF';
+    if (audioEnabled) playTone(880, 0.08, 'triangle');
   });
 
   /* ==========================================================
-     THEME SWITCHER
+     THEME SWITCHER (persisted)
      ========================================================== */
-  const themes = ['cyan', 'matrix', 'amber', 'crimson'];
-  let currentThemeIdx = 0;
-  const themeBtn = document.getElementById('theme-btn');
+  var themes = ['cyan', 'matrix', 'amber', 'crimson'];
+  var themeBtn = document.getElementById('theme-btn');
+  var savedTheme = null;
+  try { savedTheme = localStorage.getItem('yedek-theme'); } catch (e) {}
+  if (savedTheme && themes.indexOf(savedTheme) > -1) applyTheme(savedTheme);
 
-  themeBtn.addEventListener('click', () => {
-    currentThemeIdx = (currentThemeIdx + 1) % themes.length;
-    const selected = themes[currentThemeIdx];
-    if (selected === 'cyan') {
-      document.documentElement.removeAttribute('data-theme');
-    } else {
-      document.documentElement.setAttribute('data-theme', selected);
-    }
-    themeBtn.textContent = `THEME: ${selected.toUpperCase()}`;
+  function applyTheme(name) {
+    if (name === 'cyan') document.documentElement.removeAttribute('data-theme');
+    else document.documentElement.setAttribute('data-theme', name);
+    themeBtn.textContent = 'THEME · ' + name.toUpperCase();
+    try { localStorage.setItem('yedek-theme', name); } catch (e) {}
+  }
+
+  themeBtn.addEventListener('click', function () {
+    var current = document.documentElement.getAttribute('data-theme') || 'cyan';
+    var next = themes[(themes.indexOf(current) + 1) % themes.length];
+    applyTheme(next);
     playTone(1050, 0.06, 'triangle');
   });
 
   /* ==========================================================
-     MATRIX CANVAS BACKGROUND
+     MATRIX RAIN (rAF-throttled)
      ========================================================== */
-  const canvas = document.getElementById('matrix-canvas');
-  const ctx = canvas.getContext('2d');
-  let characters = '0123456789ABCDEF01X_<>{}[]*~#$@&!?';
-  let fontSize = 14;
-  let columns = 0;
-  let drops = [];
+  var canvas = document.getElementById('matrix-canvas');
+  var ctx = canvas.getContext('2d');
+  var chars = '0123456789ABCDEF01X_<>{}[]*~#$@&!?';
+  var fontSize = 14;
+  var columns = 0;
+  var drops = [];
+  var lastFrame = 0;
 
   function resizeCanvas() {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
-    columns = Math.floor(canvas.width / fontSize);
-    drops = Array(columns).fill(1);
+    columns = Math.max(1, Math.floor(canvas.width / fontSize));
+    drops = Array.apply(null, Array(columns)).map(function () { return Math.random() * -50; });
   }
   window.addEventListener('resize', resizeCanvas);
   resizeCanvas();
 
-  function drawMatrix() {
-    ctx.fillStyle = 'rgba(5, 7, 14, 0.12)';
+  function drawMatrix(ts) {
+    requestAnimationFrame(drawMatrix);
+    if (ts - lastFrame < 50) return; // ~20fps is plenty for rain
+    lastFrame = ts;
+
+    var style = getComputedStyle(document.documentElement);
+    ctx.fillStyle = style.getPropertyValue('--bg-base').trim() || '#05070e';
+    ctx.globalAlpha = 0.12;
     ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.globalAlpha = 1;
 
-    const style = getComputedStyle(document.documentElement);
-    ctx.fillStyle = style.getPropertyValue('--cyan').trim() || '#00f3ff';
-    ctx.font = `${fontSize}px monospace`;
+    ctx.fillStyle = style.getPropertyValue('--accent').trim() || '#00f3ff';
+    ctx.font = fontSize + 'px monospace';
 
-    for (let i = 0; i < drops.length; i++) {
-      const text = characters.charAt(Math.floor(Math.random() * characters.length));
-      ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-      if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
-        drops[i] = 0;
-      }
-      drops[i]++;
+    for (var i = 0; i < drops.length; i++) {
+      ctx.fillText(chars.charAt(Math.floor(Math.random() * chars.length)), i * fontSize, drops[i] * fontSize);
+      if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
+      drops[i] += reduceMotion ? 0 : 1;
     }
   }
-  setInterval(drawMatrix, 40);
+  requestAnimationFrame(drawMatrix);
 
   /* ==========================================================
-     OSCILLOSCOPE TELEMETRY CANVAS
+     OSCILLOSCOPE
      ========================================================== */
-  const oscCanvas = document.getElementById('osc-canvas');
-  const oscCtx = oscCanvas.getContext('2d');
-  let oscPhase = 0;
+  var oscCanvas = document.getElementById('osc-canvas');
+  var oscCtx = oscCanvas.getContext('2d');
+  var oscPhase = 0;
+  var freqEl = document.getElementById('osc-freq');
 
   function resizeOsc() {
     oscCanvas.width = oscCanvas.clientWidth;
@@ -1190,423 +1035,438 @@ Key highlights:
   setTimeout(resizeOsc, 100);
 
   function drawOscilloscope() {
-    if (!oscCanvas.width) resizeOsc();
-    oscCtx.clearRect(0, 0, oscCanvas.width, oscCanvas.height);
-    const w = oscCanvas.width;
-    const h = oscCanvas.height;
+    requestAnimationFrame(drawOscilloscope);
+    if (reduceMotion) return;
+    if (!oscCanvas.width) { resizeOsc(); return; }
+
+    var w = oscCanvas.width, h = oscCanvas.height;
+    oscCtx.clearRect(0, 0, w, h);
 
     oscCtx.strokeStyle = 'rgba(255,255,255,0.05)';
     oscCtx.lineWidth = 1;
     oscCtx.beginPath();
-    oscCtx.moveTo(0, h/2); oscCtx.lineTo(w, h/2);
+    oscCtx.moveTo(0, h / 2); oscCtx.lineTo(w, h / 2);
     oscCtx.stroke();
 
-    const style = getComputedStyle(document.documentElement);
-    const color = style.getPropertyValue('--cyan').trim() || '#00f3ff';
+    var style = getComputedStyle(document.documentElement);
+    var color = style.getPropertyValue('--accent').trim() || '#00f3ff';
 
     oscCtx.strokeStyle = color;
     oscCtx.lineWidth = 1.5;
     oscCtx.shadowColor = color;
     oscCtx.shadowBlur = 8;
-
     oscCtx.beginPath();
-    for (let x = 0; x < w; x++) {
-      const norm = (x / w) * 12;
-      const noise = (Math.sin(norm + oscPhase * 2) * 0.4 + Math.sin(norm * 2.5 - oscPhase) * 0.6);
-      const spike = Math.exp(-Math.pow((x - (w * ((oscPhase * 0.4) % 1))), 2) / 300) * 12;
-      const y = (h / 2) + (noise * 8) - spike;
-      if (x === 0) oscCtx.moveTo(x, y);
-      else oscCtx.lineTo(x, y);
+
+    for (var x = 0; x < w; x++) {
+      var norm = (x / w) * 12;
+      var noise = Math.sin(norm + oscPhase * 2) * 0.4 + Math.sin(norm * 2.5 - oscPhase) * 0.6;
+      var spike = Math.exp(-Math.pow(x - (w * ((oscPhase * 0.4) % 1)), 2) / 300) * 12;
+      var y = h / 2 + noise * 8 - spike;
+      if (x === 0) oscCtx.moveTo(x, y); else oscCtx.lineTo(x, y);
     }
     oscCtx.stroke();
     oscCtx.shadowBlur = 0;
 
     oscPhase += 0.035;
-    requestAnimationFrame(drawOscilloscope);
+    if (Math.random() < 0.02) freqEl.textContent = (4 + Math.random() * 1.5).toFixed(1) + ' GHz';
   }
-  drawOscilloscope();
 
   /* ==========================================================
      UPTIME COUNTER
      ========================================================== */
-  let secondsUptime = 0;
-  const uptimeEl = document.getElementById('uptime');
-  setInterval(() => {
+  var secondsUptime = 0;
+  setInterval(function () {
     secondsUptime++;
-    const hrs = String(Math.floor(secondsUptime / 3600)).padStart(2, '0');
-    const mins = String(Math.floor((secondsUptime % 3600) / 60)).padStart(2, '0');
-    const secs = String(secondsUptime % 60).padStart(2, '0');
-    uptimeEl.textContent = `${hrs}:${mins}:${secs}`;
+    var hrs = String(Math.floor(secondsUptime / 3600)).padStart(2, '0');
+    var mins = String(Math.floor((secondsUptime % 3600) / 60)).padStart(2, '0');
+    var secs = String(secondsUptime % 60).padStart(2, '0');
+    document.getElementById('uptime').textContent = hrs + ':' + mins + ':' + secs;
   }, 1000);
-
   /* ==========================================================
-     PRO BOOT TERMINAL GATE ANIMATION & UNLOCK
+     BOOT GATE
      ========================================================== */
-  const gate = document.getElementById('gate');
-  const workspace = document.getElementById('workspace');
-  const bootLogsStream = document.getElementById('boot-logs-stream');
-  const decryptPct = document.getElementById('decrypt-pct');
-  const decryptFill = document.getElementById('decrypt-fill');
-  const bootBtn = document.getElementById('boot-btn');
-  let gateUnlocked = false;
+  var gate = document.getElementById('gate');
+  var workspace = document.getElementById('workspace');
+  var gateLog = document.getElementById('gate-log');
+  var gpPct = document.getElementById('gp-pct');
+  var gpFill = document.getElementById('gp-fill');
+  var gateUnlocked = false;
 
-  let bootProgress = 0;
-  const extraBootLogs = [
-    { text: "[ CRYPTO ] INITIALIZING HYBRID ZERO-KNOWLEDGE HANDSHAKE...", type: "info" },
-    { text: "[ TUNNEL ] ROUTING VIA ONION ENCRYPTED RELAY: TOR_NODE_ACTIVE", type: "ok" },
-    { text: "[ AUDIT ] PRE-CHECKING EXCHANGE WALLET ISOLATION RULES...", type: "ok" },
-    { text: "[ ACCESS ] SECTOR ACCESS GRANTED FOR root@yedek", type: "ok" },
-    { text: "[ READY ] ALL SUB-SYSTEMS SYNCHRONIZED AND READY FOR ENGAGEMENT", type: "crit" }
+  var bootLines = [
+    { text: '[ BIOS ] SECURE CORE v4.8.2 INITIALIZED', type: 'ok' },
+    { text: '[ CPU  ] 16x NEURAL PROCESSORS @ 5.2 GHz ... OK', type: 'ok' },
+    { text: '[ MEM  ] 64GB ECC MEMORY [AES-XTS-512] ... OK', type: 'ok' },
+    { text: '[ NET  ] ENCRYPTED TUNNEL ESTABLISHED', type: 'info' },
+    { text: '[ AUTH ] ED25519 SIGNATURE VERIFIED FOR root@yedek', type: 'ok' },
+    { text: '[ WARN ] SPECIALIZATION: FINANCIAL SYSTEMS SECURITY', type: 'warn' },
+    { text: '[ STAT ] 3.5+ YEARS ACTIVE OPS · RESPONSIBLE DISCLOSURE ONLY', type: 'crit' }
   ];
-  let logIdx = 0;
 
-  const bootInterval = setInterval(() => {
-    if (bootProgress < 100) {
-      bootProgress += Math.floor(10 + Math.random() * 15);
-      if (bootProgress > 100) bootProgress = 100;
-      decryptPct.textContent = `${bootProgress}%`;
-      decryptFill.style.width = `${bootProgress}%`;
+  bootLines.forEach(function (item, i) {
+    setTimeout(function () {
+      if (gateUnlocked) return;
+      var line = document.createElement('div');
+      line.className = 'gline ' + item.type;
+      line.textContent = item.text;
+      gateLog.appendChild(line);
+      gateLog.scrollTop = gateLog.scrollHeight;
+    }, 120 + i * 170);
+  });
 
-      if (logIdx < extraBootLogs.length && Math.random() > 0.3) {
-        const item = extraBootLogs[logIdx];
-        const line = document.createElement('div');
-        line.className = `boot-line ${item.type}`;
-        line.textContent = item.text;
-        bootLogsStream.appendChild(line);
-        bootLogsStream.scrollTop = bootLogsStream.scrollHeight;
-        logIdx++;
-      }
-    }
-  }, 220);
+  var bootProgress = 0;
+  var bootInterval = setInterval(function () {
+    if (gateUnlocked) { clearInterval(bootInterval); return; }
+    bootProgress = Math.min(100, bootProgress + Math.floor(7 + Math.random() * 12));
+    gpPct.textContent = bootProgress + '%';
+    gpFill.style.width = bootProgress + '%';
+    if (bootProgress >= 100) clearInterval(bootInterval);
+  }, 130);
 
-  function executeUnlock() {
+  function enterSite() {
     if (gateUnlocked) return;
     gateUnlocked = true;
     clearInterval(bootInterval);
-
     initAudioEngine();
     startBGM();
     playTone(1350, 0.12, 'triangle');
-
     gate.classList.add('hidden');
     workspace.classList.add('active');
-    setTimeout(() => gate.remove(), 700);
+    setTimeout(function () { gate.remove(); }, 700);
+    animateMetrics();
     startTerminalBoot();
   }
 
-  bootBtn.addEventListener('click', executeUnlock);
-  window.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter' && !gateUnlocked) {
-      executeUnlock();
-    }
+  document.getElementById('gate-enter').addEventListener('click', enterSite);
+  window.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter' && !gateUnlocked) enterSite();
   });
 
-  /* ==========================================================
-     TERMINAL CORE ENGINE & AI INTEGRATION (PERFECT SCROLL)
-     ========================================================== */
-  const termLogs = document.getElementById('term-logs');
-  const termInput = document.getElementById('term-input');
-  let cmdHistory = [];
-  let historyIdx = -1;
-  let isAiResponding = false;
-  let chatMemory = [];
+  function animateMetrics() {
+    setTimeout(function () {
+      document.querySelectorAll('.metric-fill').forEach(function (fill, i) {
+        setTimeout(function () { fill.style.width = fill.getAttribute('data-w'); }, i * 180);
+      });
+    }, 300);
+  }
 
-  function scrollTerminalToBottom() {
-    requestAnimationFrame(() => {
+  /* ==========================================================
+     TERMINAL CORE
+     ========================================================== */
+  var termLogs = document.getElementById('term-logs');
+  var termInput = document.getElementById('term-input');
+  var cmdHistory = [];
+  var historyIdx = -1;
+  var isTyping = false;
+
+  function scrollBottom() {
+    requestAnimationFrame(function () {
       termLogs.scrollTop = termLogs.scrollHeight;
     });
   }
 
-  function appendLine(html, type = 'output') {
-    const line = document.createElement('div');
-    line.className = `term-line ${type}`;
+  function appendLine(html, type) {
+    var line = document.createElement('div');
+    line.className = 'term-line ' + (type || 'output');
     line.innerHTML = html;
     termLogs.appendChild(line);
-    scrollTerminalToBottom();
-    playTone(700 + Math.random()*200, 0.02, 'sine');
+    scrollBottom();
+    playTone(700 + Math.random() * 200, 0.02, 'sine');
     return line;
   }
 
-  const asciiBanner = `
-██╗   ██╗███████╗██████╗ ███████╗██╗  ██╗
-╚██╗ ██╔╝██╔════╝██╔══██╗██╔════╝██║ ██╔╝
- ╚████╔╝ █████╗  ██║  ██║█████╗  █████╔╝ 
-  ╚██╔╝  ██╔══╝  ██║  ██║██╔══╝  ██╔═██╗ 
-   ██║   ███████╗██████╔╝███████╗██║  ██╗
-   ╚═╝   ╚══════╝╚═════╝ ╚══════╝╚═╝  ╚═╝
-  [ ROOT OFFENSIVE OPERATIONS & NEURAL CORE ]`;
+  var asciiBanner =
+'██╗   ██╗███████╗██████╗ ███████╗██╗  ██╗\n' +
+'╚██╗ ██╔╝██╔════╝██╔══██╗██╔════╝██║ ██╔╝\n' +
+' ╚████╔╝ █████╗  ██║  ██║█████╗  █████╔╝ \n' +
+'  ╚██╔╝  ██╔══╝  ██║  ██║██╔══╝  ██╔═██╗ \n' +
+'   ██║   ███████╗██████╔╝███████╗██║  ██╗\n' +
+'   ╚═╝   ╚══════╝╚═════╝ ╚══════╝╚═╝  ╚═╝';
 
-  const bootMessages = [
-    { text: "[INIT] Loading kernel 6.8.0-kali-amd64...", type: "sys", delay: 100 },
-    { text: "[AUTH] Cryptographic token verified for session: root@yedek", type: "success", delay: 250 },
-    { text: "[AI] Neural Core online [ACTIVE]", type: "sys", delay: 450 },
-    { text: "[AUDIO] Ambient Cyber Soundtrack loaded: OST_0x01_NEURAL_BREACH", type: "sys", delay: 600 },
-    { text: "[PROFILE] 3.5+ Years Offensive Experience · Multiple Exchange Breaches Prevented", type: "warn", delay: 800 },
-    { text: `<div class="term-ascii">${asciiBanner}</div>`, type: "output", delay: 950 },
-    { text: "Neural Core online. Talk with <b>yedek</b> directly, or execute system commands.", type: "output", delay: 1100 },
+  var bootMessages = [
+    { text: '[INIT] Loading kernel... <span style="color:var(--green)">OK</span>', type: 'sys', delay: 100 },
+    { text: '[AUTH] Session token verified for root@yedek', type: 'success', delay: 300 },
+    { text: '[AI]   Neural Core online', type: 'sys', delay: 500 },
+    { text: '[AUDIO] Ambient soundtrack loaded', type: 'sys', delay: 650 },
+    { text: '<div class="term-ascii">' + asciiBanner + '</div>', type: 'output', delay: 850 },
+    { text: 'Neural Core online. Talk to me directly or run a command — type <b>help</b> for the list.', type: 'output', delay: 1050 }
   ];
 
   function startTerminalBoot() {
-    bootMessages.forEach(msg => {
-      setTimeout(() => {
-        appendLine(msg.text, msg.type);
-      }, msg.delay);
+    bootMessages.forEach(function (msg) {
+      setTimeout(function () { appendLine(msg.text, msg.type); }, msg.delay);
     });
-    setTimeout(() => {
-      termInput.focus();
-    }, 1200);
+    setTimeout(function () { termInput.focus(); }, 1150);
   }
 
-  /* Cloudflare AI Bridge Caller */
-  async function queryAI(userText) {
-    if (isAiResponding) return;
-    isAiResponding = true;
+  /* ==========================================================
+     CONVERSATION BRAIN (local, zero-dependency)
+     ========================================================== */
+  function getReply(q0) {
+    var q = q0.trim().toLowerCase();
 
-    chatMemory.push({ role: "user", content: userText });
-    const spinnerLine = appendLine(`<span class="ai-tag">[yedek]</span> <span class="thinking-spinner">⚡ Processing query...</span>`, 'sys');
-
-    let aiText = "";
-
-    // 1. Try Local AI Bridge Server (Node.js backend on localhost:3000)
-    try {
-      const response = await fetch("http://localhost:3000/api/chat", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ messages: chatMemory })
-      });
-
-      if (response.ok) {
-        const data = await response.json();
-        if (data && data.result && data.result.response) {
-          aiText = data.result.response;
-        } else if (data && data.result && typeof data.result === 'string') {
-          aiText = data.result;
-        }
-      }
-    } catch (e) {
-      // Local bridge offline -> fallback to instant brain
+    if (/^(hi|hello|hey|yo|sup|selam|merhaba|günaydın|good (morning|evening|afternoon))\b/.test(q) || q === 'nasilsin' || q.indexOf('how are you') > -1) {
+      return "Hey! Welcome. Systems are live and I'm listening. Ask me anything about security work, pricing, or how an engagement runs.";
     }
-
-    // 2. If bridge was not reached, use dynamic contextual reply
-    if (!aiText) {
-      await new Promise(r => setTimeout(r, 380));
-      aiText = getDynamicYedekReply(userText);
+    if (q.indexOf('price') > -1 || q.indexOf('pricing') > -1 || q.indexOf('cost') > -1 || q.indexOf('rate') > -1 || q.indexOf('fee') > -1 || q.indexOf('how much') > -1 || q.indexOf('charge') > -1 || q.indexOf('ücret') > -1 || q.indexOf('fiyat') > -1) {
+      return "Pricing is straightforward:\n\n• Hourly — ~$50–70/hr (vulnerability hunting, code review, API testing)\n• Web/API Audit — $500–$1,500 (manual deep-dive + PoC report)\n• Exchange / Infra Assessment — custom quote by scope\n\nE-mail: yedekhesap145566@gmail.com";
     }
-
-    spinnerLine.remove();
-    chatMemory.push({ role: "assistant", content: aiText });
-    typewriterAIResponse(aiText);
+    if (q.indexOf('hire') > -1 || q.indexOf('work with you') > -1 || q.indexOf('contract') > -1 || q.indexOf('engage') > -1 || q.indexOf('collaborate') > -1) {
+      return "Engagements run in three steps:\n\n1. Scoping & NDA — we define targets and sign mutual authorization.\n2. Manual penetration testing — logic flaws, race conditions, auth bypasses; the stuff scanners miss.\n3. Remediation report — reproducible PoCs + developer-ready fixes.\n\nReady when you are → yedekhesap145566@gmail.com";
+    }
+    if (q.indexOf('contact') > -1 || q.indexOf('email') > -1 || q.indexOf('e-mail') > -1 || q.indexOf('reach') > -1 || q.indexOf('mail') > -1 || q.indexOf('iletişim') > -1) {
+      return "Fastest channel: yedekhesap145566@gmail.com\nOr hit \"HIRE ME\" / \"COPY E-MAIL\" in the left panel.";
+    }
+    if (q.indexOf('who are you') > -1 || q.indexOf('about yourself') > -1 || q.indexOf('introduce') > -1 || q.indexOf('kim') > -1) {
+      return "I'm yedek — offensive security researcher with 3.5+ years in the field. I specialize in breaking complex financial systems and web APIs, and I've helped multiple exchange platforms fix critical flaws before they could be weaponized.";
+    }
+    if (q.indexOf('exchange') > -1 || q.indexOf('crypto') > -1 || q.indexOf('experience') > -1 || q.indexOf('story') > -1 || q.indexOf('track record') > -1) {
+      return "3.5+ years focused on high-throughput exchange architectures:\n\n• Race conditions — patched critical concurrency bugs in hot-wallet withdrawal logic\n• Order-matching — fixed auth bypasses in WebSocket order-book engines\n• Cloud hardening — locked down microservices against SSRF & metadata exfiltration";
+    }
+    if (q.indexOf('ssrf') > -1) {
+      return "SSRF forces a server to make requests to internal resources — commonly abused against cloud metadata endpoints (169.254.169.254) and internal services like Redis or Elasticsearch for pivoting and privilege escalation.";
+    }
+    if (q.indexOf('rce') > -1 || q.indexOf('remote code') > -1) {
+      return "RCE lets an attacker execute arbitrary commands on the host. Typical roots: insecure deserialization, unvalidated command injection, or memory corruption bugs.";
+    }
+    if (q.indexOf('idor') > -1 || q.indexOf('access control') > -1 || q.indexOf('bola') > -1) {
+      return "IDOR/BOLA happens when object references lack authorization checks. In financial APIs it's often game over: account takeover, balance manipulation, data leaks.";
+    }
+    if (q.indexOf('thank') > -1 || q.indexOf('teşekkür') > -1 || q.indexOf('tesekkur') > -1) {
+      return "Anytime. Stay secure out there.";
+    }
+    if (q.indexOf('bye') > -1 || q.indexOf('görüşürüz') > -1) {
+      return "Session stays open if you need me. Good luck!";
+    }
+    return "Interesting angle — \"" + q0.trim() + "\". From a security standpoint, everything comes down to business logic and trust boundaries. Try <b>skills</b>, <b>pricing</b> or <b>hire</b> — or ask me anything specific about your target architecture.";
   }
 
-  function typewriterAIResponse(text) {
-    const container = document.createElement('div');
+  function typewriterAI(text) {
+    isTyping = true;
+    var container = document.createElement('div');
     container.className = 'term-line ai-resp';
-    container.innerHTML = `<span class="ai-tag">[yedek]</span> <span class="ai-text"></span>`;
+    container.innerHTML = '<span class="ai-tag">[yedek]</span> <span class="ai-text"></span>';
     termLogs.appendChild(container);
 
-    const textSpan = container.querySelector('.ai-text');
-    let idx = 0;
-    const speed = 12;
+    var span = container.querySelector('.ai-text');
+    var idx = 0;
 
-    function typeChar() {
+    (function typeChar() {
+      if (!container.isConnected) { isTyping = false; return; } // cleared mid-typing
       if (idx < text.length) {
-        textSpan.textContent += text.charAt(idx);
+        span.textContent += text.charAt(idx);
         idx++;
-        scrollTerminalToBottom();
-        if (idx % 3 === 0) playTone(950 + Math.random()*150, 0.015, 'sine');
-        setTimeout(typeChar, speed);
+        scrollBottom();
+        if (idx % 4 === 0) playTone(950 + Math.random() * 150, 0.015, 'sine');
+        setTimeout(typeChar, reduceMotion ? 0 : 11);
       } else {
-        isAiResponding = false;
-        scrollTerminalToBottom();
+        isTyping = false;
+        scrollBottom();
         termInput.focus();
       }
-    }
-    typeChar();
+    })();
   }
 
-  /* Built-in CLI Commands (100% English UI) */
-  const commands = {
-    help: () => {
-      return `
-<b>AVAILABLE SYSTEM COMMANDS:</b>
---------------------------------------------------------
-<span style="color:var(--cyan)">[Any message / question]</span> : Talk directly with <b>yedek</b>
-<span style="color:var(--cyan)">whoami</span>                   : Display researcher identity & background
-<span style="color:var(--cyan)">skills</span>                   : Technical offensive toolkit & methodologies
-<span style="color:var(--cyan)">experience</span>               : 3.5+ years track record & exchange defense history
-<span style="color:var(--cyan)">pricing</span>                  : Check hourly & fixed audit rates
-<span style="color:var(--cyan)">hire</span>                     : Initiate security audit engagement protocol
-<span style="color:var(--cyan)">scan</span>                     : Execute interactive vulnerability probe simulator
-<span style="color:var(--cyan)">music</span>                    : Toggle background cyber soundtrack [play/pause]
-<span style="color:var(--cyan)">theme</span>                    : Cycle GUI color palette [cyan, matrix, amber, crimson]
-<span style="color:var(--cyan)">audio</span>                    : Toggle sound effects [on / off]
-<span style="color:var(--cyan)">matrix</span>                   : Launch full-screen Matrix data stream
-<span style="color:var(--cyan)">clear</span>                    : Wipe terminal output buffer
---------------------------------------------------------`;
+  function queryAI(userText) {
+    appendLine('<span class="ai-tag">[yedek]</span> <span class="thinking">analyzing...</span>', 'sys').classList.add('temp-thinking');
+    setTimeout(function () {
+      var th = termLogs.querySelector('.temp-thinking');
+      if (th) th.remove();
+      typewriterAI(getReply(userText));
+    }, reduceMotion ? 60 : 420);
+  }
+
+  /* ==========================================================
+     COMMANDS
+     ========================================================== */
+  var commands = {
+    help: function () {
+      return '<b>AVAILABLE COMMANDS</b>\n' +
+'--------------------------------------------------\n' +
+'<span style="color:var(--accent)">[any message]</span>  : talk directly with yedek\n' +
+'<span style="color:var(--accent)">whoami</span>          : identity & background\n' +
+'<span style="color:var(--accent)">skills</span>          : technical arsenal\n' +
+'<span style="color:var(--accent)">experience</span>      : track record & highlights\n' +
+'<span style="color:var(--accent)">pricing</span>         : rates & audit packages\n' +
+'<span style="color:var(--accent)">hire</span>            : open engagement e-mail\n' +
+'<span style="color:var(--accent)">contact</span>         : contact channels\n' +
+'<span style="color:var(--accent)">scan</span>            : interactive probe simulator\n' +
+'<span style="color:var(--accent)">music</span>           : toggle background music\n' +
+'<span style="color:var(--accent)">theme</span>           : cycle color palette\n' +
+'<span style="color:var(--accent)">matrix</span>          : hyper matrix stream\n' +
+'<span style="color:var(--accent)">clear</span>           : wipe buffer';
     },
 
-    whoami: () => {
-      return `
-<span style="color:var(--cyan);font-weight:700;">[IDENTITY RECORD]</span>
-<b>Handle:</b> yedek
-<b>Designation:</b> Elite Bug Bounty Hunter & Security Researcher (#1 Ranked)
-<b>Experience:</b> 3.5+ Years Active Offensive Security & Red Teaming
-<b>Key Accomplishment:</b> Personally protected and rescued multiple major cryptocurrency and financial exchange platforms from severe zero-day exploitation and wallet draining attacks.
-<b>Ethical Standard:</b> 100% Responsible Disclosure Only.`;
+    whoami: function () {
+      return '<span style="color:var(--accent);font-weight:700;">[IDENTITY]</span>\n' +
+'<b>Handle</b>: yedek\n' +
+'<b>Role</b>: Offensive Security Researcher · Red Team\n' +
+'<b>Experience</b>: 3.5+ years active operations\n' +
+'<b>Focus</b>: financial systems, exchanges, web/API security\n' +
+'<b>Standard</b>: responsible disclosure only.';
     },
 
-    skills: () => {
-      return `
-<span style="color:var(--cyan);font-weight:700;">[TECHNICAL ARSENAL & TOOLKIT]</span>
-• <b>Offensive Testing:</b> Burp Suite Pro, Metasploit, Ghidra, Frida, Nuclei, Nmap, Wireshark, SQLmap
-• <b>Core Focus:</b> Exchange API Security, Race Conditions, Concurrency Exploits, OAuth/JWT Bypass, Cloud (AWS/GCP), Memory Corruption
-• <b>Languages:</b> Python, Bash, Go, JavaScript, C/C++, Rust, x86/ARM Assembly
-• <b>Standards:</b> OWASP Top 10, NIST SP 800-115, PTES, MITRE ATT&CK Framework`;
+    skills: function () {
+      return '<span style="color:var(--accent);font-weight:700;">[TECHNICAL ARSENAL]</span>\n' +
+'• Offensive: Burp Suite Pro, Metasploit, Ghidra, Frida, Nuclei, Nmap, Wireshark, SQLmap\n' +
+'• Focus: race conditions, OAuth/JWT bypasses, cloud (AWS/GCP), memory corruption\n' +
+'• Languages: Python, Bash, Go, JavaScript, C/C++, Rust, x86/ARM ASM\n' +
+'• Standards: OWASP Top 10, NIST SP 800-115, PTES, MITRE ATT&CK';
     },
 
-    experience: () => {
-      return `
-<span style="color:var(--green);font-weight:700;">[3.5+ YEARS TRACK RECORD & EXCHANGE DEFENSE]</span>
-[+] <b>Tier-1 Crypto Exchanges:</b> Identified and patched critical race conditions in hot-wallet withdrawal logic, preventing catastrophic fund drain.
-[+] <b>Order Book & Trading APIs:</b> Mitigated authorization bypasses allowing unauthorized trade executions and balance manipulation.
-[+] <b>Zero-Day Research:</b> 18+ Disclosed High-Severity CVEs across enterprise infrastructure and financial gateways.
-[+] <b>450+ Valid Security Reports:</b> Resolved across premier global Bug Bounty Programs.`;
+    experience: function () {
+      return '<span style="color:var(--green);font-weight:700;">[TRACK RECORD]</span>\n' +
+'[+] Tier-1 crypto exchanges — critical race conditions patched in hot-wallet withdrawal flows\n' +
+'[+] Trading APIs — authorization bypasses mitigated before exploitation\n' +
+'[+] Zero-day research — multiple high-severity disclosures\n' +
+'[+] Bug bounty — hundreds of valid reports resolved';
     },
 
-    pricing: () => {
-      return `
-<span style="color:var(--cyan);font-weight:700;">[AFFORDABLE ENGAGEMENT RATES]</span>
-• <b>Hourly Rate:</b> ~$50 - $70 / hour (Affordable & fair for startups, audits, and code reviews)
-• <b>Basic Web/API Audit:</b> $500 – $1,500 (Comprehensive testing + full remediation report)
-• <b>Custom Exchange / Red Team Engagement:</b> Tailored quotes based on scope.
-Contact: <b>yedekhesap145566@gmail.com</b>`;
+    pricing: function () {
+      return '<span style="color:var(--accent);font-weight:700;">[RATES]</span>\n' +
+'• Hourly — ~$50–70/hr\n' +
+'• Web/API Audit — $500–$1,500 (testing + full remediation report)\n' +
+'• Custom Exchange / Red Team — tailored quote\n' +
+'Contact: <b>yedekhesap145566@gmail.com</b>';
     },
 
-    music: () => {
-      if (musicPlaying) {
-        pauseBGM();
-        return `<span style="color:var(--yellow)">[!] Cyber soundtrack PAUSED.</span>`;
-      } else {
-        startBGM();
-        return `<span style="color:var(--green)">[+] Cyber soundtrack RESUMED.</span>`;
-      }
+    hire: function () {
+      setTimeout(function () {
+        window.location.href = 'mailto:yedekhesap145566@gmail.com?subject=Security%20Engagement%20Request';
+      }, 600);
+      return '<span style="color:var(--green)">[+] Opening mail client → yedekhesap145566@gmail.com</span>';
     },
 
-    hire: () => {
-      setTimeout(() => {
-        window.location.href = "mailto:yedekhesap145566@gmail.com?subject=Security%20Engagement%20Request";
-      }, 800);
-      return `<span style="color:var(--green)">[+] Opening mail client for: <b>yedekhesap145566@gmail.com</b></span>`;
+    contact: function () {
+      return '<span style="color:var(--accent);font-weight:700;">[CONTACT CHANNELS]</span>\n' +
+'• E-mail : yedekhesap145566@gmail.com\n' +
+'• GitHub : github.com/seqwraww\n' +
+'Response time: usually under 24h.';
     },
 
-    theme: () => {
+    music: function () {
+      if (musicPlaying) { pauseBGM(); return '<span style="color:var(--yellow)">[!] BGM paused.</span>'; }
+      startBGM();
+      return '<span style="color:var(--green)">[+] BGM playing.</span>';
+    },
+
+    theme: function () {
       themeBtn.click();
-      return `<span style="color:var(--cyan)">[+] Palette switched successfully.</span>`;
+      return '<span style="color:var(--accent)">[+] Palette switched.</span>';
     },
 
-    audio: () => {
-      audioToggleBtn.click();
-      return `<span style="color:var(--cyan)">[+] Audio setting updated: ${audioEnabled ? 'ENABLED' : 'MUTED'}</span>`;
+    audio: function () {
+      document.getElementById('audio-toggle').click();
+      return '<span style="color:var(--accent)">[+] Audio: ' + (audioEnabled ? 'ON' : 'OFF') + '</span>';
     },
 
-    matrix: () => {
-      characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ아이우エオカキクケコサシスセソタチツテト';
+    matrix: function () {
+      chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZアイウエオカキクケコサシスセソタチツテト';
       fontSize = 12;
       resizeCanvas();
-      return `<span style="color:var(--green);font-weight:700;">[+] HYPER MATRIX STREAM ENGAGED</span>`;
+      return '<span style="color:var(--green);font-weight:700;">[+] HYPER MATRIX STREAM ENGAGED</span>';
     },
 
-    clear: () => {
+    clear: function () {
       termLogs.innerHTML = '';
       return null;
     }
   };
 
-  /* Interactive Target Scanner Simulator */
-  function runInteractiveScan() {
-    const steps = [
-      { text: "[*] Initializing target probe on subnets...", delay: 200, type: "sys" },
-      { text: "[*] Resolving DNS & mapping attack surface: 14 live endpoints identified", delay: 700, type: "sys" },
-      { text: "[+] Port 443/HTTPS: HTTP/2 ALPN Supported, TLS 1.3 Active", delay: 1200, type: "output" },
-      { text: "[!] Probing for OAuth Misconfiguration & Concurrency Flaws...", delay: 1700, type: "warn" },
-      { text: "[!] VULNERABILITY DETECTED: CWE-918 (Server-Side Request Forgery on Internal Microservice)", delay: 2300, type: "danger" },
-      { text: "[✓] Scan completed. Vulnerability report generated for responsible disclosure.", delay: 2900, type: "success" }
+  function runScan() {
+    var steps = [
+      { text: '[*] Initializing target probe...', delay: 200, type: 'sys' },
+      { text: '[*] DNS resolved · 14 live endpoints mapped', delay: 750, type: 'sys' },
+      { text: '[+] Port 443/TCP — TLS 1.3, HTTP/2 ALPN', delay: 1250, type: 'output' },
+      { text: '[!] Probing OAuth config & concurrency handling...', delay: 1750, type: 'warn' },
+      { text: '[!] CWE-918 detected: SSRF against internal microservice', delay: 2350, type: 'danger' },
+      { text: '[✓] Scan complete — report ready for responsible disclosure.', delay: 2950, type: 'success' }
     ];
-    steps.forEach(s => {
-      setTimeout(() => appendLine(s.text, s.type), s.delay);
+    steps.forEach(function (s) {
+      setTimeout(function () { appendLine(s.text, s.type); }, s.delay);
     });
   }
 
-  /* Command & AI Routing */
-  function handleInput(rawInput) {
-    const trimmed = rawInput.trim();
+  function handleInput(raw) {
+    var trimmed = raw.trim();
     if (!trimmed) return;
 
-    appendLine(`<span class="term-prompt">root@yedek:~#</span> ${trimmed}`, 'cmd');
+    appendLine('<span class="term-prompt">root@yedek:~#</span>' + trimmed, 'cmd');
     cmdHistory.push(trimmed);
     historyIdx = cmdHistory.length;
 
-    let clean = trimmed;
-    if (clean.toLowerCase().startsWith('ai ')) {
-      clean = clean.substring(3).trim();
-      queryAI(clean);
-      return;
-    }
+    var cmd = trimmed.split(' ')[0].toLowerCase();
 
-    const parts = clean.split(' ');
-    const cmd = parts[0].toLowerCase();
-
-    // Check exact command match
     if (commands[cmd]) {
-      const output = commands[cmd]();
-      if (output !== null) appendLine(output, 'output');
+      var out = commands[cmd]();
+      if (out !== null) appendLine(out, 'output');
     } else if (cmd === 'scan') {
-      runInteractiveScan();
+      runScan();
+    } else if (cmd === 'sudo') {
+      appendLine('<span style="color:var(--pink)">nice try.</span> You are already root here.', 'output');
     } else {
-      // Direct pass to AI
       queryAI(trimmed);
     }
   }
 
-  /* Keyboard Listeners for Terminal Input */
-  termInput.addEventListener('keydown', (e) => {
+  /* ==========================================================
+     INPUT EVENTS
+     ========================================================== */
+  termInput.addEventListener('keydown', function (e) {
     if (e.key === 'Enter') {
       handleInput(termInput.value);
       termInput.value = '';
     } else if (e.key === 'ArrowUp') {
-      if (historyIdx > 0) {
-        historyIdx--;
-        termInput.value = cmdHistory[historyIdx];
-      }
+      if (historyIdx > 0) { historyIdx--; termInput.value = cmdHistory[historyIdx]; }
       e.preventDefault();
     } else if (e.key === 'ArrowDown') {
-      if (historyIdx < cmdHistory.length - 1) {
-        historyIdx++;
-        termInput.value = cmdHistory[historyIdx];
-      } else {
-        historyIdx = cmdHistory.length;
-        termInput.value = '';
-      }
+      if (historyIdx < cmdHistory.length - 1) { historyIdx++; termInput.value = cmdHistory[historyIdx]; }
+      else { historyIdx = cmdHistory.length; termInput.value = ''; }
       e.preventDefault();
     } else if (e.key === 'Tab') {
       e.preventDefault();
-      const current = termInput.value.toLowerCase();
-      const match = Object.keys(commands).find(c => c.startsWith(current));
+      var current = termInput.value.toLowerCase();
+      if (!current) return;
+      var all = Object.keys(commands).concat(['scan', 'sudo']);
+      var match = all.find(function (c) { return c.startsWith(current); });
       if (match) termInput.value = match;
     } else {
-      playTone(1100 + Math.random()*200, 0.015, 'sine');
+      playTone(1100 + Math.random() * 200, 0.015, 'sine');
     }
   });
 
-  /* Quick Command Chips Click */
-  document.querySelectorAll('.chip').forEach(chip => {
-    chip.addEventListener('click', () => {
-      const cmd = chip.getAttribute('data-cmd');
-      handleInput(cmd);
+  document.querySelectorAll('.chip').forEach(function (chip) {
+    chip.addEventListener('click', function () {
+      handleInput(chip.getAttribute('data-cmd'));
       termInput.focus();
     });
   });
-</script>
 
+  /* ==========================================================
+     COPY E-MAIL
+     ========================================================== */
+  document.getElementById('copy-email-btn').addEventListener('click', function () {
+    var email = 'yedekhesap145566@gmail.com';
+    var label = document.getElementById('copy-email-text');
+
+    function done(ok) {
+      label.textContent = ok ? 'Copied ✓' : email;
+      playTone(1200, 0.08, 'triangle');
+      setTimeout(function () { label.textContent = 'Copy E-Mail'; }, 2200);
+    }
+
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(email).then(function () { done(true); }, function () { done(false); });
+    } else {
+      var ta = document.createElement('textarea');
+      ta.value = email;
+      document.body.appendChild(ta);
+      ta.select();
+      try { document.execCommand('copy'); done(true); } catch (e) { done(false); }
+      ta.remove();
+    }
+  });
+
+})();
+</script>
 </body>
 </html>
