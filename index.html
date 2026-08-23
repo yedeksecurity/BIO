@@ -617,6 +617,66 @@
     white-space: nowrap;
   }
 
+  /* ============ CONTACT MODAL ============ */
+  #modal-overlay {
+    position: fixed; inset: 0;
+    background: rgba(2, 4, 10, 0.78);
+    backdrop-filter: blur(6px);
+    z-index: 90;
+    display: flex; align-items: center; justify-content: center;
+    padding: 20px;
+    opacity: 0; visibility: hidden;
+    transition: opacity 0.25s ease, visibility 0.25s ease;
+  }
+  #modal-overlay.open { opacity: 1; visibility: visible; }
+  .modal-box {
+    width: min(440px, 92vw);
+    background: var(--bg-panel);
+    border: 1px solid var(--accent);
+    border-radius: var(--radius);
+    box-shadow: 0 25px 70px rgba(0,0,0,0.8), 0 0 40px var(--glow);
+    backdrop-filter: blur(24px);
+    transform: translateY(14px) scale(0.97);
+    transition: transform 0.25s ease;
+    overflow: hidden;
+    position: relative;
+  }
+  #modal-overlay.open .modal-box { transform: translateY(0) scale(1); }
+  .modal-header {
+    height: 42px;
+    background: rgba(255,255,255,0.03);
+    border-bottom: 1px solid var(--border-soft);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 16px;
+    font-size: 11px; font-weight: 600; letter-spacing: 1.5px;
+    color: var(--accent);
+  }
+  .modal-close {
+    background: transparent; border: none;
+    color: var(--text-dim); cursor: pointer;
+    display: flex; align-items: center;
+    padding: 4px; border-radius: 4px;
+    transition: all 0.15s ease;
+  }
+  .modal-close:hover { color: var(--pink); }
+  .modal-body { padding: 20px 22px 22px; display: flex; flex-direction: column; gap: 10px; }
+  .modal-email {
+    text-align: center;
+    font-size: 12.5px;
+    color: var(--accent);
+    background: var(--bg-inset);
+    border: 1px solid var(--border-soft);
+    border-radius: 6px;
+    padding: 10px;
+    letter-spacing: 0.5px;
+    user-select: text;
+  }
+  .modal-note {
+    text-align: center; font-size: 9.5px;
+    color: var(--text-dim); letter-spacing: 1px;
+    margin-bottom: 4px;
+  }
+
   /* ============ RESPONSIVE ============ */
   @media (max-width: 900px) {
     body { overflow-y: auto; overflow-x: hidden; }
@@ -771,10 +831,10 @@
 
       <!-- CTAs -->
       <div class="cta-row">
-        <a class="cta-btn cta-primary" href="mailto:yedekhesap145566@gmail.com?subject=Security%20Engagement%20Request">
+        <button class="cta-btn cta-primary" id="hire-btn" type="button">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
           Hire Me →
-        </a>
+        </button>
         <button class="cta-btn cta-ghost" id="copy-email-btn" type="button">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
           <span id="copy-email-text">Copy E-Mail</span>
@@ -821,6 +881,35 @@
   </section>
 
 </main>
+
+<!-- ============ CONTACT MODAL ============ -->
+<div id="modal-overlay" role="dialog" aria-modal="true" aria-label="Contact options">
+  <div class="modal-box">
+    <div class="modal-header">
+      <span>ENGAGEMENT_REQUEST // CONTACT</span>
+      <button class="modal-close" id="modal-close" aria-label="Close" type="button">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-email">yedekhesap145566@gmail.com</div>
+      <div class="modal-note">SELECT A CHANNEL TO REACH OUT</div>
+      <button class="cta-btn cta-primary" id="open-gmail-btn" type="button">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        Open Gmail
+      </button>
+      <button class="cta-btn cta-ghost" id="open-mailapp-btn" type="button">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6zm-2 0-8 5-8-5h16zm0 12H4V8l8 5 8-5v10z"/></svg>
+        Default Mail App
+      </button>
+      <button class="cta-btn cta-ghost" id="modal-copy-btn" type="button">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+        Copy Address
+      </button>
+    </div>
+  </div>
+</div>
+
 <script>
 (function () {
   'use strict';
@@ -1326,10 +1415,8 @@
     },
 
     hire: function () {
-      setTimeout(function () {
-        window.location.href = 'mailto:yedekhesap145566@gmail.com?subject=Security%20Engagement%20Request';
-      }, 600);
-      return '<span style="color:var(--green)">[+] Opening mail client → yedekhesap145566@gmail.com</span>';
+      setTimeout(openContactModal, 500);
+      return '<span style="color:var(--green)">[+] Opening contact channels...</span>';
     },
 
     contact: function () {
@@ -1459,6 +1546,58 @@
       try { document.execCommand('copy'); done(true); } catch (e) { done(false); }
       ta.remove();
     }
+  });
+
+  /* ==========================================================
+     CONTACT MODAL
+     ========================================================== */
+  var overlay = document.getElementById('modal-overlay');
+  var EMAIL = 'yedekhesap145566@gmail.com';
+
+  function openContactModal() {
+    overlay.classList.add('open');
+    playTone(900, 0.06, 'triangle');
+  }
+  function closeContactModal() {
+    overlay.classList.remove('open');
+  }
+
+  document.getElementById('hire-btn').addEventListener('click', openContactModal);
+  document.getElementById('modal-close').addEventListener('click', closeContactModal);
+  overlay.addEventListener('click', function (e) {
+    if (e.target === overlay) closeContactModal();
+  });
+  window.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closeContactModal();
+  });
+
+  document.getElementById('open-gmail-btn').addEventListener('click', function () {
+    var url = 'https://mail.google.com/mail/?view=cm&fs=1&tf=1'
+      + '&to=' + encodeURIComponent(EMAIL)
+      + '&su=' + encodeURIComponent('Security Engagement Request');
+    window.open(url, '_blank', 'noopener');
+    playTone(1200, 0.08, 'triangle');
+    closeContactModal();
+  });
+
+  document.getElementById('open-mailapp-btn').addEventListener('click', function () {
+    window.location.href = 'mailto:' + EMAIL + '?subject=' + encodeURIComponent('Security Engagement Request');
+    closeContactModal();
+  });
+
+  document.getElementById('modal-copy-btn').addEventListener('click', function () {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(EMAIL).catch(function () {});
+    } else {
+      var ta = document.createElement('textarea');
+      ta.value = EMAIL;
+      document.body.appendChild(ta);
+      ta.select();
+      try { document.execCommand('copy'); } catch (e) {}
+      ta.remove();
+    }
+    playTone(1200, 0.08, 'triangle');
+    closeContactModal();
   });
 
 })();
