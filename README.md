@@ -2,7 +2,7 @@
 
 Personal portfolio of **yedek** — Offensive Security Researcher & Red Team Operator.
 
-**Live:** https://seqwraww.github.io/BIO/
+**Live:** https://yedeksecurity.github.io/BIO/
 
 ## Features
 
@@ -15,4 +15,3 @@ Personal portfolio of **yedek** — Offensive Security Researcher & Red Team Ope
 ## Contact
 
 - E-mail: yedekhesap145566@gmail.com
-- GitHub: [seqwraww](https://github.com/seqwraww)
