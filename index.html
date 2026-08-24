@@ -143,6 +143,13 @@
     z-index: 1;
     opacity: 0.30;
   }
+  #yt-player {
+    position: fixed; bottom: 0; right: 0;
+    width: 2px; height: 2px;
+    opacity: 0.02;
+    pointer-events: none;
+    z-index: 0;
+  }
   /* ============ TOP HUD BAR ============ */
   .hud-topbar {
     position: fixed; top: 0; left: 0; right: 0;
@@ -793,7 +800,7 @@
         <div class="player-row">
           <span class="player-track">
             <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
-            BGM · NEURAL_BREACH
+            BGM · CLAMS CASINO — I'M GOD
           </span>
           <div class="eq-bars" id="eq-bars" aria-hidden="true">
             <div class="eq-bar"></div><div class="eq-bar"></div><div class="eq-bar"></div><div class="eq-bar"></div><div class="eq-bar"></div>
@@ -881,6 +888,10 @@
   </section>
 
 </main>
+
+<!-- Hidden YouTube player for background music -->
+<div id="yt-player" aria-hidden="true"></div>
+<script src="https://www.youtube.com/iframe_api" async></script>
 
 <!-- ============ CONTACT MODAL ============ -->
 <div id="modal-overlay" role="dialog" aria-modal="true" aria-label="Contact options">
@@ -1002,27 +1013,84 @@
       var note = synthScale[(step * 3 + Math.floor(Math.random() * 2)) % synthScale.length];
       playSynthNote(note, 0.24, 700 + Math.sin(step * 0.2) * 500);
     }
-    var bars = document.querySelectorAll('.eq-bar');
-    bars.forEach(function (bar) {
-      bar.style.height = musicPlaying ? Math.floor(4 + Math.random() * 10) + 'px' : '3px';
-    });
     step++;
+  }
+
+  /* ---- BGM: YouTube track with synth fallback ---- */
+  var ytPlayer = null;
+  var ytFailed = false;
+  var currentVol = 50;
+  var ytTrackId = 'w4ThD_cxOKQ'; // Clams Casino - I'm God
+
+  window.onYouTubeIframeAPIReady = function () {
+    try {
+      ytPlayer = new YT.Player('yt-player', {
+        height: '2',
+        width: '2',
+        videoId: ytTrackId,
+        playerVars: {
+          autoplay: 0,
+          controls: 0,
+          disablekb: 1,
+          loop: 1,
+          playlist: ytTrackId,
+          playsinline: 1,
+          rel: 0
+        },
+        events: {
+          onReady: function () {
+            try { ytPlayer.setVolume(currentVol); } catch (e) {}
+          },
+          onError: function () { ytFailed = true; }
+        }
+      });
+    } catch (e) { ytFailed = true; }
+  };
+
+  function animateEq(on) {
+    var bars = document.querySelectorAll('.eq-bar');
+    if (!on) { bars.forEach(function (b) { b.style.height = '3px'; }); return; }
+    setInterval(function () {
+      bars.forEach(function (b) { b.style.height = Math.floor(4 + Math.random() * 10) + 'px'; });
+    }, 135);
+  }
+
+  function startSynth() {
+    if (musicInterval) clearInterval(musicInterval);
+    musicInterval = setInterval(playCyberBeat, 135);
   }
 
   function startBGM() {
     initAudioEngine();
     if (musicPlaying) return;
     musicPlaying = true;
-    if (musicInterval) clearInterval(musicInterval);
-    musicInterval = setInterval(playCyberBeat, 135);
     document.getElementById('music-btn-text').textContent = 'PAUSE';
+    animateEq(true);
+
+    function tryYt(retries) {
+      if (!musicPlaying || ytPlayer && typeof ytPlayer.getPlayerState === 'function' && ytPlayer.getPlayerState() === 1) return;
+      if (ytFailed) { startSynth(); return; }
+      if (ytPlayer && typeof ytPlayer.playVideo === 'function') {
+        try {
+          ytPlayer.setVolume(currentVol);
+          ytPlayer.playVideo();
+          return;
+        } catch (e) {}
+      }
+      if (retries > 0) setTimeout(function () { tryYt(retries - 1); }, 500);
+      else startSynth();
+    }
+    tryYt(12);
   }
 
   function pauseBGM() {
     musicPlaying = false;
-    if (musicInterval) clearInterval(musicInterval);
     document.getElementById('music-btn-text').textContent = 'PLAY';
-    document.querySelectorAll('.eq-bar').forEach(function (b) { b.style.height = '3px'; });
+    if (ytPlayer && typeof ytPlayer.pauseVideo === 'function') {
+      try { ytPlayer.pauseVideo(); } catch (e) {}
+    }
+    if (musicInterval) clearInterval(musicInterval);
+    animateEq(false);
   }
 
   document.getElementById('music-btn').addEventListener('click', function () {
@@ -1030,7 +1098,12 @@
   });
 
   document.getElementById('music-vol').addEventListener('input', function (e) {
-    if (bgmGain && audioCtx) bgmGain.gain.setValueAtTime(parseFloat(e.target.value) * 0.6, audioCtx.currentTime);
+    var v = parseFloat(e.target.value);
+    currentVol = Math.round(v * 100);
+    if (bgmGain && audioCtx) bgmGain.gain.setValueAtTime(v * 0.6, audioCtx.currentTime);
+    if (ytPlayer && typeof ytPlayer.setVolume === 'function') {
+      try { ytPlayer.setVolume(currentVol); } catch (err) {}
+    }
   });
 
   document.getElementById('audio-toggle').addEventListener('click', function () {
@@ -1271,7 +1344,7 @@
     { text: '[INIT] Loading kernel... <span style="color:var(--green)">OK</span>', type: 'sys', delay: 100 },
     { text: '[AUTH] Session token verified for root@yedek', type: 'success', delay: 300 },
     { text: '[AI]   Neural Core online', type: 'sys', delay: 500 },
-    { text: '[AUDIO] Ambient soundtrack loaded', type: 'sys', delay: 650 },
+    { text: '[AUDIO] Now playing — Clams Casino · I\'m God', type: 'sys', delay: 650 },
     { text: '<div class="term-ascii">' + asciiBanner + '</div>', type: 'output', delay: 850 },
     { text: 'Neural Core online. Talk to me directly or run a command — type <b>help</b> for the list.', type: 'output', delay: 1050 }
   ];
